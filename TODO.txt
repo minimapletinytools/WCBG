@@ -1,0 +1,20 @@
+::implementation questions::
+-granularity of lazy update tracking. i.e. should jobs be tracked separately
+  -currently the answer is no but seems like it may be gas cost prohibitive to do update land if it needs to update all jobs which then needs to update all animals
+  -e.g.
+    -animal
+      -normal update (metabolism)
+      -job
+      -tax
+    -land
+      -normal update (ecology)
+      -jobs
+      -tax
+
+
+::other ideas::
+-small reward for updating other people's stuff
+  -scales on number of blocks
+  -bonus if tax liability exceeds total amount (to reduce burden on others)
+-insurance for failure to pay salary 
+-severance pay for removing animals from work
