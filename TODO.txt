@@ -1,5 +1,25 @@
+::ecology::
+-C02
+  -reduces naturally over time at a <???> rate dependent on amount of natural flora
+-natural flora
+  -increases at a <???> rate over time dependent on C02 and topsoil quality?
+-pollution
+  -decreases very very slowly over time?
+  -use logarithmic scale as increase productivity means increased pollution probs
+-season (X blocks = 1 year)
+  -globally effect temperature
+  -may effect rainfall etc..
+
+::market place::
+-XYK vs LMSR marketplace
+-cost
+  -taxation on goods in potatoes, can be voted for
+  -CO2 emission for transporting stuff to/from market place
+  -easy version: fixed potatoes per unit weight of goods sent to/from the marketplace
+  -hard version: see transportation
+
 ::implementation questions::
--granularity of lazy update tracking. i.e. should jobs be tracked separately
+DONE-granularity of lazy update tracking. i.e. should jobs be tracked separately
   -currently the answer is no but seems like it may be gas cost prohibitive to do update land if it needs to update all jobs which then needs to update all animals
   -e.g.
     -animal
@@ -11,10 +31,33 @@
       -jobs
       -tax
 
-
 ::other ideas::
 -small reward for updating other people's stuff
   -scales on number of blocks
   -bonus if tax liability exceeds total amount (to reduce burden on others)
--insurance for failure to pay salary 
+-insurance for failure to pay salary
 -severance pay for removing animals from work
+-GDP calculator
+-SoL requirements (e.g. animals must be be fed a sufficiently good diet)
+-potato deposit for making proposals, refunded if enough votes
+  -?? finders fee for proposing proposals that pass?
+-number of votes needed for policy to pass
+
+::future ideas::
+-housing rent and non trivial topology
+  -housing: land can develop a number of housing units
+    -better housing = better energy recovery
+    -affinity: longer an animal stays in place better recovery from housing (up to a cap)
+  -transportation
+    -animal must commute to work, further the commute, more energy consumed
+    -animal must commute to see service providers
+  -transportation of goods
+    -how to pay for transportation of goods?
+    -local markets
+  -public transport, roads etc.
+  -marketplaces
+    -can be built by players, upgraded etc..
+    -transportation based on distance to market
+-animal lifecycle
+  -animal reproduction and reproduction laws?
+  -animal death

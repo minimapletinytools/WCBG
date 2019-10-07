@@ -1,6 +1,11 @@
+// constants
+uint TAX_DENOM = 10000000;
+uint ENERGY_PER_BLOCK = 10;
+
 struct Working {
     uint16 landId;
     uint8 jobIndex;
+    uint64 lastWorkUpdate;
 }
 
 struct Job {
@@ -82,7 +87,6 @@ struct Animal {
 
 // TODO public policy proposal + voting to pass
 
-uint TAX_DENOM = 10000000;
 struct PublicPolicy {
     // tax is over tax/TAX_DENOM * <value> per block
     uint32 landTax;
@@ -255,7 +259,7 @@ function updateAnimal(Animal storage animal) {
 
     // TODO update hunger
 
-    // update work
+    // ?? update work (could be done separately)
     if(animal.job != 0) {
         work(animal, lands[animal.job.landId], animal.job.jobIndex);
     }
@@ -341,15 +345,23 @@ function startJob(uint256 animalId, Animal storage animal, uint256 landId, Land 
     animal.job = Job{landId, jobIndex};
 }
 
-function work(Animal storage animal, Land land, Job job)
+function work(Animal storage animal)
 {
+    Land storage land = lands[animal.job.landId];
+    Job job = lands.jobs[animal.job.jobIndex];
+
+    //
+
     // TODO check that animal has enough energy to work
         // do something if animal can't work
+        // attempt to update the animal to get more energy
+
+    //TODO figure out blocks worked
+    //
+    //blocksWorked = animal.job.lastWorkUpdate;
 
     output = typeProductivity(job) * jobCompat(animal, job) * landCompat(land, job);
     masters.addItem(animal.owner, job.ItemType, output)
-
-    // TODO modify animal stats
 }
 
 
