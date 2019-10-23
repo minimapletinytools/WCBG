@@ -57,10 +57,6 @@ struct Land {
 // LandStats startingStats;
 // address owner;
 
-struct Diet {
-    // TODO
-}
-
 struct AnimalStats {
     uint16 str;
     uint16 intel;
@@ -97,11 +93,6 @@ struct PublicPolicy {
     uint32 landTax;
     uint32 animalTax;
 
-    // ?? prob don't need this anymore
-    // masters should have at least taxReserve/100000 * <taxation per block>
-    uint16 taxReserve;
-
-
     // other parameters
     // severance?
     // uint severanceBlocks;
@@ -110,6 +101,7 @@ struct PublicPolicy {
     // finders fee bonus per overdue block
     // bankrupcy finders fee?
     // bankrupcy thresheld? (amonut owed > threshold*asset value)
+    // carbon tax
 
 }
 
@@ -119,9 +111,6 @@ struct Master {
     uint256 tokens; // potatoes
     uint256 publicDebt;
     uint256 voiceCredits;
-
-    // TODO total assets value (may cover tax reserve?)
-    // TODO total harberger tax reserve liability (to ensure enough funds to pay all tax)
 }
 
 library Masters {
@@ -134,7 +123,7 @@ library Masters {
         return tokens[owner];
     }
     // returns new debt accrued
-    function subBalance(address owner, uint256 value) uint256 {
+    function subBalance(address owner, uint256 value) returns uint256 {
         Master storage master = masters[owner];
         if(value > master.tokens) {
             uint256 newDebt = value - masters.tokens;
@@ -144,6 +133,8 @@ library Masters {
             // TODO handle force bankrupcy
             // IDK if public debt exceeds total value of all assets owed, then player really goes bankrupt and relinquishes all assets to the government for auction.
             //if(master.debt > master.totalAssetValue*law.bankruptThreshold)
+
+            // todo debt needs to be taken from public's reserve
 
             return newDebt;
         }
@@ -159,13 +150,8 @@ library Masters {
         }
         masters[owner].tokens += value;
     }
-
-    // ?? do we really need this? I don't think we do if we have public debt
-    function checkReserve(address owner, uint32 tax, uint256 amount) returns bool {
-        // TODO check if reserve funds are sufficient to cover increase in tax liability
-        //taxLiability = tax/TAX_DENOM * amount
-    }
 }
+
 
 // TODO more items
 enum ItemType { NIL_ITEM = 0, CORN, STUFF }
@@ -194,13 +180,6 @@ function levyTax(address master, uint16 tax, uint256 amount, uint blocks) {
 function SetAnimalPrice(uint256 animalId, uint256 price) external {
     animal = animals[animalId];
 
-    // ?? do we really need this? I don't think we do if we have public debt
-    if(price > animal.price) {
-        if(!masters.checkReserve(animal.master, law.animalTax, price - animal.price)) {
-            return;
-        }
-    }
-
     // must tax before setting price to ensure lazyness is correct
     taxAnimal(animal);
 
@@ -215,12 +194,6 @@ function PurchaseAnimal(uint256 animalId, uint256 price) {
     require(masters.balance(msg.sender) > price);
     masters.subBalance(msg.sender, price);
     masters.addBalance(animal.master, price);
-
-    // ?? do we really need this? I don't think we do if we have public debt
-    // check tax reserves are sufficient
-    if(!masters.checkReserve(msg.sender, law.animalTax, price)) {
-        return;
-    }
 
     // update animal so that previous owner gets earnings up until the purchase
     UpdateAnimal(animalId);
@@ -251,14 +224,9 @@ function ApplyJob(uint256 animalId, uint256 landId, uint8 jobIndex) {
 
 function updateAnimal(Animal storage animal) {
 
-    uint numBlocks = block.number-animal.lastUpdate
-    // early exit if nothing will happen
-    if(numBlocks == 0) {
-        return;
-    }
+    uint numBlocks = block.number-animal.lastUpdate;
 
-    // DELETE
-    // ?? do we need this?
+    // DELETE should be done sep
     //taxAnimal(animal);
 
     // give master VOICE
@@ -267,10 +235,9 @@ function updateAnimal(Animal storage animal) {
     // feed the animal to full
     feedAnimal(animal, ENERGY_PER_BLOCK_BASE * numBlocks, MAX_ENERGY);
 
-    // DELETE
-    // ?? update work (could be done separately)
+    // DELETE should be done sep
     //if(animal.job != 0) {
-    //    work(animal, lands[animal.job.landId], animal.job.jobIndex);
+    //    work(animal)
     //}
 
     // ?? is it a problem if there are future updates in the same block#?
@@ -295,6 +262,12 @@ function feedAnimal(Animal storage animal, uint32 consumed, uint32 fill) {
     }
 }
 
+function payAnimal(Animal storage animal, address master, uint256 amount) {
+    // todo fallback case if potatoes could not be borrowed
+    masters.subBalance(master, amount);
+    masters.addBalance(animal.master, amount);
+}
+
 // animal internal functions
 function taxAnimal(Animal storage animal) {
     numBlocks = block.number-animal.lastTaxUpdate;
@@ -304,26 +277,57 @@ function taxAnimal(Animal storage animal) {
 
 function setAnimalPrice(Animal storage animal, uint256 price) {
     animal.price = price;
-    // TODO update master tax reserve liability
 }
 
 function animalIsUpdated(Animal storage animal) returns bool {
     return animal.lastUpdate == block.number;
 }
 
-//function SetPrice(uint256 landId, uint256 price) {
+function SetLandPrice(uint256 landId, uint256 price) {
+    land = lands[landId];
+
+    // must tax before setting price to ensure lazyness is correct
+    taxLand(land);
+
+    setLandPrice(land, price)
+}
+
+function setLandPrice(Land storage land, uint256 price) {
+    land.price = price;
+}
+
+
+function PurchaseLand(uint256 landId, uint256 price) {
+    land = lands[landId];
+
+    // check for sufficient funds
+    require(masters.balance(msg.sender) > price);
+    masters.subBalance(msg.sender, price);
+    masters.addBalance(land.owner, price);
+
+    for(int i=0; i < land.workingAnimals.length; i++) {
+        if(land.workingAnimals[i] != 0) {
+            work(animals[land.workingAnimals[i]]);
+        }
+    }
+
+    // update ownership
+    land.owner = msg.sender;
+
+    setLandPrice(land, price);
+}
 
 // land transactions
 function UpdateLand(uint256 landId) {
-    // TODO finish
-
     land = lands[landId];
+    uint numBlocks = block.number-land.lastUpdate;
 
-    taxLand(land);
+    // DELETE should be done sep
+    //taxLand(land);
 
-    // ?? TODO do we update all jobs or no
+    uint carbon = updateEcologyPassive(land, numBlocks);
 
-    // ?? TODO update ecology (or does this happen when jobs get updated?)
+    // TODO carbon tax
 
     land.lastUpdate = block.number;
 }
@@ -337,7 +341,8 @@ function removeJob(Land storage land, uint jobIndex) {
         land.workingAnimals[jobIndex] = 0;
         animal.job = 0;
 
-        // TODO severance pay
+        // severance pay
+        payAnimal(animal, land.master, law.severanceBlocks * job.wage);
 
     }
     land.jobs[jobIndex] = 0;
@@ -353,8 +358,6 @@ function taxLand(Land storage land) {
     levyTax(land.owner, law.landTax, land.value, numBlocks);
     land.lastTaxUpdate = block.number;
 }
-
-
 
 // animal<->land functions
 function quitJob(Animal storage animal) {
@@ -382,16 +385,19 @@ function work(Animal storage animal)
 
     Land storage land = lands[animal.job.landId];
     Job job = lands.jobs[animal.job.jobIndex];
-
     blocksWorked = block.number - animal.job.lastWorkUpdate;
+
+    // update land ecology
+    uint carbon = updateEcologyJob(land, job, blocksWorked);
+
+    // TODO carbon tax
 
     // todo energy conusmed based on job/animal stats
     energyConsumed = blocksWorked * ENERGY_PER_BLOCK_WORKED;
     feedAnimal(animal, energyConsumed, 0);
 
-    // TODO pay the animal
-    uint payment = job.wage * blocksWorked;
-    masters.addBalance(animal.master, blocksWorked.
+    // pay the animal
+    payAnimal(animal, land.owner, job.wage * blocksWorked);
 
     // add output to master
     output = typeProductivity(job) * jobCompat(animal, job) * landCompat(land, job);
@@ -400,6 +406,19 @@ function work(Animal storage animal)
     animal.job.lastWorkUpdate = block.number;
 }
 
+// returns net carbon
+function updateEcologyPassive(Land storage land, uint blocks)  returns uint  {
+    //TODO local ecology
+
+    //TODO global
+}
+
+// returns net carbon
+function updateEcologyJob(Land storage land, Job job, uint blocks) returns uint {
+    //TODO local ecology
+
+    //TODO global
+}
 
 // lookup/compatability functions
 function jobProductivity(Job job) pure returns float {
@@ -418,3 +437,25 @@ function jobCompat(Animal animal, Job job) pure returns float {
 function landCompat(Land land, Job job) pure returns float {
     // TODO
 }
+
+
+
+
+struct Market {
+    uint tokens;
+    uint potatoes;
+    mapping(address => uint) liquidity;
+}
+
+library MarketPlace {
+    mapping(ItemType => Market);
+
+    // TODO
+    // based on uniswap
+    //AddLiqudity()
+    //RemoveLiquidity()
+    //PotatoesToTokens()
+    //TokensToPatotes()
+}
+
+MarketPlace globalMarketPlace;
