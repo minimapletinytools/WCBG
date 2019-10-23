@@ -24,6 +24,7 @@ shortcomings:
   -even special kitties are not so unique
 -no closed economic loop for extended value generation
   -eventual loss of interest reduce value of even special and gen 0 kitties
+  -economy reliant on outside participation
 -TBH kind of a ponzi scheme
 To be clear, cryptokitties is a very succesful blockchain games and by examining areas where it fell short (long term value) we can push the boundary further and innovate.
 

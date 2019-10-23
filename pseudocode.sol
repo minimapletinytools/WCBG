@@ -1,6 +1,10 @@
 // constants
 uint TAX_DENOM = 10000000;
-uint ENERGY_PER_BLOCK = 10;
+uint32 ENERGY_PER_POTATO = 100;
+uint32 ENERGY_PER_BLOCK_WORKED = 100;
+uint32 ENERGY_PER_BLOCK_BASE = 1;
+uint32 MAX_ENERGY = 0xFFFFFFFF;
+uint32 VC_PER_BLOCK = 100;
 
 struct Working {
     uint16 landId;
@@ -10,6 +14,7 @@ struct Working {
 
 struct Job {
    ItemType itemType;
+   uint wage;
 }
 
 struct LandPosition {
@@ -33,6 +38,7 @@ struct LandStats {
 }
 
 struct Land {
+    Address owner;
     string name;
     uint256 value;
 
@@ -78,7 +84,6 @@ struct Animal {
 
     uint32 energy;
     uint32 happiness;
-    uint32 voiceCredits;
     Diet diet;
 
     uint64 lastUpdate;
@@ -92,12 +97,14 @@ struct PublicPolicy {
     uint32 landTax;
     uint32 animalTax;
 
+    // ?? prob don't need this anymore
     // masters should have at least taxReserve/100000 * <taxation per block>
     uint16 taxReserve;
 
 
     // other parameters
     // severance?
+    // uint severanceBlocks;
     // insurance for failure to pay salary or
     // finders fee per block
     // finders fee bonus per overdue block
@@ -109,8 +116,9 @@ struct PublicPolicy {
 struct Master {
     // todo use more efficient dense storage since # of times are finite
     mapping (ItemType => uint) items;
-    uint256 tokens;
+    uint256 tokens; // potatoes
     uint256 publicDebt;
+    uint256 voiceCredits;
 
     // TODO total assets value (may cover tax reserve?)
     // TODO total harberger tax reserve liability (to ensure enough funds to pay all tax)
@@ -125,9 +133,22 @@ library Masters {
     function balance(address owner) {
         return tokens[owner];
     }
-    function subBalance(address owner, uint256 value) {
-        require(value > masters[owner].tokens);
-        masters[owner].tokens -= value;
+    // returns new debt accrued
+    function subBalance(address owner, uint256 value) uint256 {
+        Master storage master = masters[owner];
+        if(value > master.tokens) {
+            uint256 newDebt = value - masters.tokens;
+            masters.tokens = 0;
+            master.debt += newDebt
+
+            // TODO handle force bankrupcy
+            // IDK if public debt exceeds total value of all assets owed, then player really goes bankrupt and relinquishes all assets to the government for auction.
+            //if(master.debt > master.totalAssetValue*law.bankruptThreshold)
+
+            return newDebt;
+        }
+        master.tokens -= value;
+        return 0;
     }
     function addBalance(address owner, uint256 value) {
         Master storage moster = masters[owner];
@@ -138,7 +159,8 @@ library Masters {
         }
         masters[owner].tokens += value;
     }
-    // do we really need this? I don't think we do if we have public debt
+
+    // ?? do we really need this? I don't think we do if we have public debt
     function checkReserve(address owner, uint32 tax, uint256 amount) returns bool {
         // TODO check if reserve funds are sufficient to cover increase in tax liability
         //taxLiability = tax/TAX_DENOM * amount
@@ -161,31 +183,11 @@ address GOV_ADDRESS = 0xBABB0;
 
 // master functions
 // this taxes the master at tax/TAX_DENOM*amount per block
-// returns amount of taxes that could not be paid due to insufficient balance
-function levyTax(address master, uint16 tax, uint256 amount, uint blocks) returns uint256 {
+function levyTax(address master, uint16 tax, uint256 amount, uint blocks) {
     // there is some round off error, prob not a big deal
     taxPerBlock = tax/TAX_DENOM * amount;
     taxAmount =  taxPerBlock * blocks;
-    old = masters.balance(master);
-    if old < taxAmount {
-        masters.subBalance(master, taxAmount);
-        return taxAmount-old;
-    }
-    masters.setBalance(master, old-taxAmount);
-    return 0;
-}
-
-function accrueDebt(address owner, uint256 amountOwed) {
-    // TODO
-    // IDK I guess add some sort of public debt?
-    // if public debt exceeds total value of all assets owed, then player really goes bankrupt and relinquishes all assets to the government for auction.
-
-    Master storage master = masters[owner];
-    master.debt += amountOwed;
-
-    // TODO handle force bankrupcy
-    //if(master.debt > master.totalAssetValue*law.bankruptThreshold)
-
+    masters.subBalance(master, taxAmount);
 }
 
 // animal transactions
@@ -249,33 +251,54 @@ function ApplyJob(uint256 animalId, uint256 landId, uint8 jobIndex) {
 
 function updateAnimal(Animal storage animal) {
 
+    uint numBlocks = block.number-animal.lastUpdate
     // early exit if nothing will happen
-    if(block.number == animal.lastUpdate) {
+    if(numBlocks == 0) {
         return;
     }
 
+    // DELETE
     // ?? do we need this?
-    taxAnimal(animal);
+    //taxAnimal(animal);
 
-    // TODO update hunger
+    // give master VOICE
+    animal.master.voiceCredits += VC_PER_BLOCK * numBlocks;
 
+    // feed the animal to full
+    feedAnimal(animal, ENERGY_PER_BLOCK_BASE * numBlocks, MAX_ENERGY);
+
+    // DELETE
     // ?? update work (could be done separately)
-    if(animal.job != 0) {
-        work(animal, lands[animal.job.landId], animal.job.jobIndex);
-    }
+    //if(animal.job != 0) {
+    //    work(animal, lands[animal.job.landId], animal.job.jobIndex);
+    //}
 
     // ?? is it a problem if there are future updates in the same block#?
     // ?? maybe 1 action/user limitation (also means you can keep track of oldest animal more easily)
     animal.lastUpdate = block.number;
 }
 
+function feedAnimal(Animal storage animal, uint32 consumed, uint32 fill) {
+    //TODO
+
+    // todo energy refilled based on animal stats
+
+    // first use potatoes
+
+    // then use reserve energy
+
+    // now use more potatoes to fill up reserve energy
+    uint32 toFill = fill-animal.energy;
+    if(toFill > 0) {
+        numPot = toFill / ENERGY_PER_POTATO;
+        min(numPot, animal.master.tokens)
+    }
+}
 
 // animal internal functions
 function taxAnimal(Animal storage animal) {
-    owed = levyTax(animal.master, law.animalTax, animal.value, block.number-animal.lastTaxUpdate);
-    if(owed > 0) {
-        accrueDebt(animal.master, owed);
-    }
+    numBlocks = block.number-animal.lastTaxUpdate;
+    levyTax(animal.master, law.animalTax, animal.value, numBlocks);
     animal.lastTaxUpdate = block.number;
 }
 
@@ -315,6 +338,7 @@ function removeJob(Land storage land, uint jobIndex) {
         animal.job = 0;
 
         // TODO severance pay
+
     }
     land.jobs[jobIndex] = 0;
 }
@@ -324,7 +348,11 @@ function createJob(Land storage land, uint jobIndex, Job jobDesc) {
 }
 
 // land internal functions
-//function taxLand(Land storage land) {
+function taxLand(Land storage land) {
+    numBlocks = block.number-land.lastTaxUpdate;
+    levyTax(land.owner, law.landTax, land.value, numBlocks);
+    land.lastTaxUpdate = block.number;
+}
 
 
 
@@ -343,25 +371,33 @@ function startJob(uint256 animalId, Animal storage animal, uint256 landId, Land 
 
     land.workingAnimals[jobIndex] = animalId;
     animal.job = Job{landId, jobIndex};
-}
+
 
 function work(Animal storage animal)
 {
+    blocksWorked = block.number - animal.job.lastWorkUpdate;
+    if(blocksWorked == 0) {
+        return;
+    }
+
     Land storage land = lands[animal.job.landId];
     Job job = lands.jobs[animal.job.jobIndex];
 
-    //
+    blocksWorked = block.number - animal.job.lastWorkUpdate;
 
-    // TODO check that animal has enough energy to work
-        // do something if animal can't work
-        // attempt to update the animal to get more energy
+    // todo energy conusmed based on job/animal stats
+    energyConsumed = blocksWorked * ENERGY_PER_BLOCK_WORKED;
+    feedAnimal(animal, energyConsumed, 0);
 
-    //TODO figure out blocks worked
-    //
-    //blocksWorked = animal.job.lastWorkUpdate;
+    // TODO pay the animal
+    uint payment = job.wage * blocksWorked;
+    masters.addBalance(animal.master, blocksWorked.
 
+    // add output to master
     output = typeProductivity(job) * jobCompat(animal, job) * landCompat(land, job);
     masters.addItem(animal.owner, job.ItemType, output)
+
+    animal.job.lastWorkUpdate = block.number;
 }
 
 

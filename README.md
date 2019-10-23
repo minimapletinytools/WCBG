@@ -1,14 +1,16 @@
+TODO UPDATE
+
 ## Potato Game Design Outline
 Potato Game takes place in Potato Land
 
 ### Potatoes
 Potatoes are the intrinsic base currency of the game. All economic transactions are handled in potatoes. These same potatoes are also an agricultural food product obtainable through labor which is explained in more detail later.
 
-### Masters <?? corporations>
-Masters are the players of the game. Masters owns resources and assets. Players interact with the game by sending signed transactions to command the master's actions. Potatoes are automatically deducted from the master's holdings in order to pay taxes on their assets.
+### Corporations
+Corporations are the players of the game. Corporations owns resources and assets. Players interact with the game by sending signed transactions to command the master's actions. Potatoes are automatically deducted from the master's holdings in order to pay taxes on their assets.
 
 ### Assets
-Assets are special public/private resources in Potato Land. They are public goods that are privately owned by masters through the potato harberger tax system. Masters choose a price for their assets. Any other master can purchase the asset for the set price. A master pays a tax to the DAO government that is proportional to the price they set. There are two types of assets in the game:
+Assets are special public/private resources in Potato Land. They are public goods that are privately owned by masters through the potato harberger tax system. Corporations choose a price for their assets. Any other master can purchase the asset for the set price. A master pays a tax to the DAO government that is proportional to the price they set. There are two types of assets in the game:
 
 #### Land
 Potato Land is split into a `25x25` grid. Each cell in the grid is a unit of land. Each unit of land is distinct. Land can host jobs and create economic output when animals work the jobs. The output is dependent on the land traits and infrastructure. Land can be developed to host infrastructure or improve its traits. Land traits can also be altered due to environmental factors.
@@ -38,9 +40,7 @@ Animals have the following quantified traits:
 - dexterity
 - dietary preference
 
-?? Animals can obtain knowledge through research which allows them to build better infrastructure and perform new services.
-
-?? Animals can hire the services of other animals.
+?? Animals can obtain knowledge through research jobs which allows them to build better infrastructure and perform new services.
 
 Animals can also vote on proposals using VOICE credits they obtain over time. See the Government section below
 
@@ -54,7 +54,9 @@ Resources are similar to assets but are fungible and untaxed. They can held as s
 - Parts: used to build infrastructure on land
 
 ### Jobs and Labor
-All economic output in Potato Land is produced through jobs. Masters become employers if they create jobs on the land they own. Animals can work jobs in exchange for wages paid for by the employer. The economic output goes to the employer and the wages goes to the employed animal's master. N.B. The animal gets nothing but must be fed by its owner so that it can have energy to work. The output of a job is dependent on the job, the land's traits, and the animals traits. Some jobs require special skills from the animal. Some jobs require infrastructure that must be developed on the land. Other infrastructure can improve the efficiency of labor. Most jobs have environmental impact.
+All economic output in Potato Land is produced through jobs. Corporations become employers if they create jobs on the land they own. Animals can work jobs in exchange for wages paid for by the employer. The economic output goes to the employer and the wages goes to the employed animal's master. N.B. The animal gets nothing but must be fed by its owner so that it can have energy to work. The output of a job is dependent on the job, the land's traits, and the animals traits. Some jobs require special skills from the animal. Some jobs require infrastructure that must be developed on the land. Other infrastructure can improve the efficiency of labor. Most jobs have environmental impact.
+
+In order to a create a job, the employer creates an opening and animals must apply. The employer can at any point hire any animal that has applied. The employer can set productivity requirements to automatically hire the first applicant that meets the requirements.
 
 #### Resource Production
 Resource producing jobs generate resources. They all have environmental impact. Some resource producing jobs may require input. Resource producing jobs can be greatly affected by infrastructure. These jobs include:
