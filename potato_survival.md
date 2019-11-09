@@ -35,7 +35,6 @@ Parents choose the price of their child when it goes on the marketplace. Sales a
 There are 10 magical treasures scattered throughout the world. Once found, these treasures become privately owned public assets taxed under the harberger tax system. An account receive different buffs on their animals depending on what treasures they own. Treasure holders also earn VOICE credits over time for each treasure they hold.
 
 ## Governance
-
 Certain parameters in the world are set through decentralized governance through quadratic voting using VOICE credits. Players can put up proposals to change tunable parameters in the world and alter gameplay. Example of tunable parameters:
 
 - Marketplace taxation rate
@@ -151,3 +150,5 @@ We resist temptation to do too much analysis here and we hope interesting emerge
 
 - Potato survival is an competitive ecosystem and it is tempting to think of it from a zero-sum perspective. However, there may be some metric for economy of the entire world which may grow and shrink. In particular, the total amount of LIFE in circulation will change over time.
 - QV for voting on in game parameters (such as LIFE redistribution policy on death) gives players control over rate of growth of the economy. With more LIFE is circulation, more players can be supported at once. However, with inflation, there is an expected decrease in token value.
+
+<TODO talk about integrating with something like potato CBG>
