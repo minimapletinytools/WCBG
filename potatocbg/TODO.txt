@@ -1,0 +1,145 @@
+
+
+Theory of play and the magic circle
+
+blockchain as a new platform for play
+
+economics and play
+
+
+----------
+
+
+Introduction:
+blockchain is paradigm shifting platform for games (maybe move later so it's not another blockchain paper...)
+A new economic platform
+economic simulation and play
+potato game 2 - QV + harberger tax (libertarian socialism?)
+
+introduction to blockchain (trustless, economics, etc)
+
+traditional games analysis?
+game economics
+breaking boundary of external/internal game economies (break magic circle)
+embracing this (eve online example)
+
+adding blockchain to games
+cryptokitties case study - sucess/short comings
+other existing types of games - on chain ownership + ponzi schemes
+argue that token exchanges may be a type of game, see breaking boundary of magic circle
+
+finally introduce potato game
+closed economic circle
+blockchain and self sovreign nature means no magic circle boundary
+yet still safe I hope, at least in the sense that we wont be making potato game asics and no second morgages to buy potatoes in order to play
+radical markets
+economic efficiency of COST and democratic efficiency of QV
+but does it really work?
+is economic growth the only goal (it is in the case of potato game, as empty as it is IRL)
+simulate externalities, see which wins
+revisit idea of goals of a game in classical games analysis/game theory
+safe part is that you agree on the goal when you enter the circle, or at least the rules of play are explicit or something like that
+
+
+
+radical market simulation
+
+paradigm shifting technology is incommensurable. It follows games built on such technology requires a new framework to understand it. Game mechanics may break game design common sense in the prior framework of understanding.
+
+We'll start by examining cryptokitties in this new framework to see its success and shortcomings
+-----------------
+::TODO::
+-finish marketplace
+-finish job compat
+-finish ecology
+-add service jobs
+-add diet upgrades
+-figure out how to do research
+  -build research tree
+
+::ecology::
+-C02
+  -reduces naturally over time at a <???> rate dependent on amount of natural flora
+-natural flora
+  -increases at a <???> rate over time dependent on C02 and topsoil quality?
+-pollution
+  -decreases very very slowly over time?
+  -use logarithmic scale as increase productivity means increased pollution probs
+-season (X blocks = 1 year)
+  -globally effect temperature
+  -may effect rainfall etc..
+
+::market place::
+-XYK vs LMSR vs buy/sell order marketplace
+-cost
+  -taxation on goods in potatoes, can be voted for
+  -CO2 emission for transporting stuff to/from market place
+  -easy version: fixed potatoes per unit weight of goods sent to/from the marketplace
+  -hard version: see transportation
+-for local market places, who pays for initial liquidity?
+
+::research::
+-multi team research projects (all research prereqs must be satisfied)
+  -all animals earn research goal
+-teaching session where research is shared?
+
+::governance::
+-research existing QV schemes?
+  -https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3243656
+  -https://csap.yale.edu/sites/default/files/files/qrmw_gw_2-16-17.pdf
+-I think having a proposal period every X blocks where up to Y proposals move onto voting preiod.
+  -You can vote for proposals to rank them during the proposal period.
+
+::income and sales tax::
+???
+
+::implementation questions::
+DONE-granularity of lazy update tracking. i.e. should jobs be tracked separately
+  -currently the answer is no but seems like it may be gas cost prohibitive to do update land if it needs to update all jobs which then needs to update all animals
+  -e.g.
+    -animal
+      -normal update (metabolism)
+      -job
+      -tax
+    -land
+      -normal update (ecology)
+      -jobs
+      -tax
+
+
+::other ideas::
+-small reward for updating other people's stuff
+  -scales on number of blocks
+  -bonus if tax liability exceeds total amount (to reduce burden on others)
+-insurance for failure to pay salary
+-severance pay for removing animals from work
+-GDP calculator
+-SoL requirements (e.g. animals must be be fed a sufficiently good diet)
+-potato deposit for making proposals, refunded if enough votes
+  -?? finders fee for proposing proposals that pass?
+-number of votes needed for policy to pass
+-discrimination laws
+-corporation action points
+  -to discourage mega accounts that avoid taxes, corporations have action points that limit how much they can do in a day
+-harberger tax for voice credits
+  -pricing structure that discourages accumulating too many votes?
+-voice credits per block can be voted on :)
+
+::future ideas::
+-housing rent and non trivial topology
+  -housing: land can develop a number of housing units
+    -better housing = better energy recovery
+    -affinity: longer an animal stays in place better recovery from housing (up to a cap)
+  -transportation
+    -animal must commute to work, further the commute, more energy consumed
+    -animal must commute to see service providers
+  -transportation of goods
+    -how to pay for transportation of goods?
+    -local markets
+  -public transport, roads etc.
+  -marketplaces
+    -can be built by players, upgraded etc..
+    -transportation based on distance to market
+-animal lifecycle
+  -animal reproduction and reproduction laws?
+  -animal death
