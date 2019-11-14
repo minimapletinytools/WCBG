@@ -20,7 +20,7 @@ Finally, along side fiat-measurable assets, world-centric virtual worlds also sa
 We summarize the goals of world centric blockchain game design as follows:
 
 1. To create self-sustaining economies where players compete and collaborate to build an economically driven world narrative
-2. That these virtual worlds are dynamic, interesting and ultimately fun for players to interact with.
-3. To use these virtual worlds as models for radical markets with multiple agents incentivized by digital assets measurable in fiat currency
+2. That these virtual worlds are dynamic, interesting and fun for players to explore.
+3. To use these virtual worlds as models for radical markets with multiple agents incentivized by digital assets measurable in fiat currency.
 
-This repository contains game design documents written with this perspective in mind. It also contains supporting documents to further elaborate the theory around world centric game design in blockchain. 
+This repository contains game design documents written with this perspective in mind. It also contains supporting documents to further elaborate the theory around world centric game design in blockchain.

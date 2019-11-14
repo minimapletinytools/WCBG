@@ -1,5 +1,59 @@
 
 
+:: Ecology ::
+-pollution
+  -recovers X/block, faster based on diversity
+  -increases based on job impact
+-fertility
+ -recovers X/block, improves based on flora
+-flora
+  -recovers based on logistic function
+  -recovery effected by fertility
+-diversity
+  -recovers based on neighboring block diversity
+  -decreases based on job impact
+
+:: Job land ::
+-total land avail is inverse function of flora (number of jobs possible)
+
+-agriculture ideal stats: sun, rain, humidity, topology, temp
+-output is scaled based on sqrt(sum of square differences of ideal and land stats)
+
+:: Job animal ::
+
+quadratic growth until stat requirement is met, logarithmic or sqrt growth afterwards
+
+-output
+  -2x favors strength
+-energy efficiency
+  -2x favors intel
+-resource efficiency
+  -2x favors dex
+  -effects fertility and resource depletion
+
+
+
+
+ecology - job specific, can be reduced by combination of energy/resource efficiency
+pleasure - job specific? maybe if output can be compared to avg productivity/animal then you get job expertise pride points.
+
+
+-animal stats
+  -strength
+  -intelligence
+  -cuteness
+  -dexterity
+-job output properties
+  -output (amount produced)
+  -energy efficiency (energy spent)
+  -resource efficiency (natural resource consumed)
+  -ecology (carbon emission and land damage)
+  -pleasure (animal happiness)
+
+
+-----------
+
+
 Theory of play and the magic circle
 
 blockchain as a new platform for play
@@ -56,6 +110,13 @@ We'll start by examining cryptokitties in this new framework to see its success 
 -add diet upgrades
 -figure out how to do research
   -build research tree
+
+::fertilizer cycle::
+-fauna/diversity -> fertility -> more fauna/diversity
+-fertility -> higher output
+-fauna/diversity -> less land -> lower output
+-fertilizer -> substitutes fertility
+-fertilizer available from mining + manufacturing
 
 ::ecology::
 -C02

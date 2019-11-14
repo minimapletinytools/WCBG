@@ -15,6 +15,17 @@ struct Working {
 struct Job {
    ItemType itemType;
    uint wage;
+   uint strReq;
+   uint dexReq;
+   uint intReq;
+   uint chrReq;
+}
+
+struct Agriculture {
+    uint sunIdeal;
+    unit rainIdeal;
+    uint topIdeal;
+    uint tempIdeal;
 }
 
 struct LandPosition {
@@ -24,8 +35,7 @@ struct LandPosition {
 
 struct LandStats {
     uint16 sun;
-    uint16 water;
-    uint16 humidity;
+    uint16 rain;
     uint16 topology;
     uint16 temp;
     uint16 fertility;
@@ -429,17 +439,43 @@ function jobProductivity(Job job) pure returns float {
     }
 }
 
+// where 1 means requirement is met
+function statCompat(uint stat, uint req) returns float {
+    if(stat <= req){
+        // quadradtic scaling before req
+        return (stat*stat)/(req*req);
+    } else {
+        // linear scaling at 1/2 factor of req
+        return 1+(stat-req)/(2*req);
+    }
+}
+
 // compatability functions
-function jobCompat(Animal animal, Job job) pure returns float {
-    // TODO
+function jobCompat(AnimalStats animal, Job job) pure returns float {
+    uint total = (job.strReq + job.dexReq + job.intReq + job.chrReq);
+    return (statCompat(animal.str, job.strReq) * job.strReq +
+        statCompat(animal.dex, job.dexReq) * job.dexReq +
+        statCompat(animal.intel, job.intReq) * job.intelReq +
+        statCompat(animal.charisma, job.chrReq) * job.chrReq) / total
 }
 
-function landCompat(Land land, Job job) pure returns float {
-    // TODO
+
+struct Agriculture {
+    uint sunIdeal;
+    unit rainIdeal;
+    uint topIdeal;
+    uint tempIdeal;
 }
 
+function agricultureCompat(LandStats land, Agriculture job) pure returns float {
+    int sun = land.sun - job.sunIdeal;
+    int rain = land.rain - job.rainIdeal;
+    int top = land.top - job.topIdeal;
+    int temp = land.temp - job.tempIdeal;
 
-
+    // closer to zero is better
+    return sqrt(sun*sun + rain*rain + top*top + temp*temp)
+}
 
 struct Market {
     uint tokens;
