@@ -99,9 +99,12 @@ struct Animal {
 // TODO public policy proposal + voting to pass
 
 struct PublicPolicy {
-    // tax is over tax/TAX_DENOM * <value> per block
+    // tax is tax/TAX_DENOM * <value> per block
     uint32 landTax;
     uint32 animalTax;
+
+    // tax is tax/TAX_DENOM * emmissions
+    uint carbonTax;
 
     // other parameters
     // severance?
@@ -111,7 +114,6 @@ struct PublicPolicy {
     // finders fee bonus per overdue block
     // bankrupcy finders fee?
     // bankrupcy thresheld? (amonut owed > threshold*asset value)
-    // carbon tax
 
 }
 
@@ -183,7 +185,22 @@ function levyTax(address master, uint16 tax, uint256 amount, uint blocks) {
     // there is some round off error, prob not a big deal
     taxPerBlock = tax/TAX_DENOM * amount;
     taxAmount =  taxPerBlock * blocks;
-    masters.subBalance(master, taxAmount);
+    basicTax(master, taxAmount);
+}
+
+function basicTax(address master, uint amount) {
+    masters.subBalance(master, amount);
+    masters.addBalance(GOV_ADDRESS, amount);
+}
+
+function carbon(address master, int amount) {
+    if(amount > 0){
+        basicTax(master,amount);
+    } else {
+        // TODO consider carbon rebates
+    }
+
+    // TODO update global carbon levels
 }
 
 // animal transactions
@@ -335,9 +352,8 @@ function UpdateLand(uint256 landId) {
     // DELETE should be done sep
     //taxLand(land);
 
-    uint carbon = updateEcologyPassive(land, numBlocks);
+    updateEcologyPassive(land, numBlocks)
 
-    // TODO carbon tax
 
     land.lastUpdate = block.number;
 }
@@ -400,8 +416,6 @@ function work(Animal storage animal)
     // update land ecology
     uint carbon = updateEcologyJob(land, job, blocksWorked);
 
-    // TODO carbon tax
-
     // todo energy conusmed based on job/animal stats
     energyConsumed = blocksWorked * ENERGY_PER_BLOCK_WORKED;
     feedAnimal(animal, energyConsumed, 0);
@@ -421,6 +435,8 @@ function updateEcologyPassive(Land storage land, uint blocks)  returns uint  {
     //TODO local ecology
 
     //TODO global
+
+    //carbon(land.master, amount);
 }
 
 // returns net carbon
@@ -428,6 +444,8 @@ function updateEcologyJob(Land storage land, Job job, uint blocks) returns uint 
     //TODO local ecology
 
     //TODO global
+
+    //carbon(land.master, amount);
 }
 
 // lookup/compatability functions

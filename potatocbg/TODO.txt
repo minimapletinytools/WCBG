@@ -1,27 +1,14 @@
 
 
-:: Ecology ::
--pollution
-  -recovers X/block, faster based on diversity
-  -increases based on job impact
--fertility
- -recovers X/block, improves based on flora
--flora
-  -recovers based on logistic function
-  -recovery effected by fertility
--diversity
-  -recovers based on neighboring block diversity
-  -decreases based on job impact
-
 :: Job land ::
 -total land avail is inverse function of flora (number of jobs possible)
 
 -agriculture ideal stats: sun, rain, humidity, topology, temp
--output is scaled based on sqrt(sum of square differences of ideal and land stats)
+  -output is scaled based on sqrt(sum of square differences of ideal and land stats)
 
 :: Job animal ::
 
-quadratic growth until stat requirement is met, logarithmic or sqrt growth afterwards
+-quadratic growth until stat requirement is met, logarithmic or sqrt growth afterwards
 
 -output
   -2x favors strength
@@ -31,12 +18,8 @@ quadratic growth until stat requirement is met, logarithmic or sqrt growth after
   -2x favors dex
   -effects fertility and resource depletion
 
-
-
-
 ecology - job specific, can be reduced by combination of energy/resource efficiency
 pleasure - job specific? maybe if output can be compared to avg productivity/animal then you get job expertise pride points.
-
 
 -animal stats
   -strength
