@@ -1,0 +1,28 @@
+graph TD
+
+subgraph economy
+development[infra/tech/knowledge]
+
+corporation -->|own| animal
+corporation -->|own| land
+
+animal -->|work| jobs
+animal -->|VOICE CREDITS| corporation
+land -->|creates| jobs
+
+jobs -->|generates| resources
+resources -->|creates| development
+development -->|improves| jobs
+development -->|equals| growth
+
+rules{RULES}
+funding{GRANTS}
+end
+
+subgraph governance
+corporation -->|taxes| government
+government -->|creates| policies
+corporation -->|votes on| policies
+policies -->|sets| rules
+policies -->|funds| funding
+end

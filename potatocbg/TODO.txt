@@ -1,6 +1,24 @@
 :: spec for adeline ::
 
+one pager?
 
+corporation (players)
+
+owns, set price, buys (harberger tax)
+
+land/animals
+
+land -creates-> jobs <-works- animal
+
+jobs -generates-> resources -creates-> infrastructure/technology/knowledge -equals-> growth
+infrastructure/technology/knowledge -improves efficiency-> jobs
+
+tax money goes to government
+quadratic voting for changing policy parameters
+
+
+
+game loop pictures?
 
 :: visual style notes ::
 game loop:
