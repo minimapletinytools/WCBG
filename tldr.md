@@ -6,10 +6,10 @@ We propose a new perspective for building blockchain games based on world centri
 |---------------------------|--------------------------------------|
 | replenishing resources    | finite resources                     |
 | revival                   | permanent death                      |
-| fast travel               |  cartesian topology (no fast travel) |
+| fast travel               | cartesian topology (no fast travel)  |
 | NPC marketplaces          | player run marketplaces              |
 
-Blockchain is the perfect environment for building world-centric games. Decentralization, self-sovreignty and code-as-law are foundational values to blockchain. Thus the blockchain game experience is ultimately driven by the emergent reality of its code rather than the intentions of its developers.
+Blockchain is an ideal environment for building world-centric games. Decentralization, self-sovreignty and code-as-law are foundational values to the platform. Thus, the blockchain game experience is ultimately driven by the emergent reality of its code rather than the intentions of its developers.
 
 Furthermore, economies create real-world incentive to drive player decision making. Primary and secondary markets will fairly and entirely determine the value of any in game asset based solely on the collective valuation of the players. World-centric blockchain games thus translates to dynamic virtual economies that are exchangeable for and measurable in real world fiat.
 
@@ -19,8 +19,10 @@ Finally, along side fiat-measurable assets, world-centric virtual worlds also sa
 
 We summarize the goals of world centric blockchain game design as follows:
 
-1. To create self-sustaining economies where players compete and collaborate to build an economically driven world narrative
+1. To create self-sustaining economies where players compete and collaborate to grow an economically driven world narrative.
 2. That these virtual worlds are dynamic, interesting and fun for players to explore.
 3. To use these virtual worlds as models for radical markets with multiple agents incentivized by digital assets measurable in fiat currency.
+
+<Or more concisely in one picture: insert picture>
 
 This repository contains game design documents written with this perspective in mind. It also contains supporting documents to further elaborate the theory around world centric game design in blockchain.

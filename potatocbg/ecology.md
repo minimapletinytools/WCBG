@@ -1,7 +1,8 @@
 # Ecology
 
 ## Global Ecology
-Global ecology is quantified into a single variable: atmospheric carbon dioxide levels
+Global pollution is quantified into a single variable: atmospheric carbon dioxide levels
+
 
 -increases based on job impact
 -recovers X/block per unit land based on that land's flora
@@ -11,17 +12,23 @@ Land ecology is quantified into several variables which affect each other as wel
 
 #### pollution
 - recovers X/block
-  - faster based on diversity
+  - faster based on fauna
 - increases based on job impact
 #### fertility
 - recovers X/block
-  - faster based on diversity
+  - faster based on fauna
 #### flora
 - recovers based on logistic function
 - recovery effected by fertility
-#### diversity
-- recovers based on neighboring block diversity
+#### fauna
+- recovers based on logistic function
+  - faster based on neighboring block fauna
   - faster based on flora
+  - slower based on pollution
+- decreases based on job impact
+#### fish [TODO delete, just roll into fauna]
+- recovers based on logistic function
+  - faster/slower based on neighboring fish
   - slower based on pollution
 - decreases based on job impact
 
