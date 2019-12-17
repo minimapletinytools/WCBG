@@ -3,11 +3,11 @@ graph TD
 subgraph economy
 development[infra/tech/knowledge]
 
-corporation -->|own| animal
-corporation -->|own| land
+corporations -->|owns| animals
+corporations -->|owns| land
 
-animal -->|work| jobs
-animal -->|VOICE CREDITS| corporation
+animals -->|work| jobs
+animals -->|VOICE CREDITS| corporations
 land -->|creates| jobs
 
 jobs -->|generates| resources
@@ -20,9 +20,9 @@ funding{GRANTS}
 end
 
 subgraph governance
-corporation -->|taxes| government
+corporations -->|taxes| government
 government -->|creates| policies
-corporation -->|votes on| policies
+corporations -->|votes on| policies
 policies -->|sets| rules
 policies -->|funds| funding
 end

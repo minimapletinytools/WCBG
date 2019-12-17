@@ -120,6 +120,7 @@ The Potato Land government has the following public policy variables:
 - reproduction policy
   - age difference
   - number of children allowed/animal (sum of # children allowed between parents must add to 1)
+- allow directly transferring (not using in-game marketplaces) Resources and Assets (ERC20/ERC721) (thus avoiding taxes, e.g. inheritance)
 
 As a blockchain game that relies on lazy evaluation, there are also policies related to the implementation details:
 

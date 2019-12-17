@@ -106,6 +106,7 @@ As a blockchain game that relies on lazy evaluation, there are also policies rel
 
 - finders fee per block updated
 - finders fee per block after bankruptcy
+- allow directly transferring (not using in-game marketplaces) Resources and Assets (ERC20/ERC721) (thus avoiding taxes, e.g. inheritance)
 
 ### Public Grants
 To incentivize public projects benefiting all masters of Potato Land, the government can issue grants. Anyone can create a new grant and apply for it. Corporations vote simultaneously to authorize the grant and choose the winning applicant.

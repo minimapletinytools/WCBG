@@ -23,6 +23,29 @@
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
+const HDWalletProvider = require("truffle-hdwallet-provider");
+
+var MNENOMIC = "list loyal bracket card sample hill siege alien adapt chronic rescue canvas";
+var APIKEY = "2edbdd953f714eeab3f0001bb0b96b91"
 
 module.exports = {
-}
+  networks: {
+    development: {
+      host: "127.0.0.1",
+      port: 8545,
+      network_id: "*" // Match any network id
+    },
+    ropsten: {
+      provider: () =>
+        new HDWalletProvider(MNENOMIC, "https://ropsten.infura.io/v3/" + APIKEY),
+      network_id: '3',
+    },
+    // main ethereum network(mainnet)
+    main: {
+      provider: () => new HDWalletProvider(MNENOMIC, "https://mainnet.infura.io/v3/" + APIKEY),
+      network_id: 1,
+      gas: 3000000,
+      gasPrice: 10000000000
+    }
+  }
+};
