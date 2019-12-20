@@ -1,3 +1,55 @@
+:: poster notes ::
+
+tree:
+topsoil
+flora
+fauna
+C02
+pollution
+
+governance bot:
+taxes -> (left) $$$
+vote -> (right) law
+
+corporation:
+animal -wages-> corp
+land -revenue-> corp
+
+job:
+animal + land = job
+job -> resources
+resources -sell-> market <-trade-> corp
+resources -technology-> technology example -upgrade-> land
+
+policy roots:
+
+-tax rate-> animal
+-tax rate-> land tax
+-tax rate-> market
+-UBI-> animal
+-insurance-> job
+-max debt-> corporation
+-carbon tax-> technology
+
+
+shadow corporations animal/land:
+corporation owns shadow animal and land
+shadow corporation own shadow animal and land
+shadow animal and land generate resources that go to market
+
+
+other ideas
+
+COST ownership on corp -> land/animal lines
+
+public property row for land/animals
+
+private ownership row for corporation
+
+
+
+
+
 :: spec for adeline ::
 
 one pager?
