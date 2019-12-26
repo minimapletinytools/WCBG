@@ -22,7 +22,6 @@ resources -sell-> market <-trade-> corp
 resources -technology-> technology example -upgrade-> land
 
 policy roots:
-
 -tax rate-> animal
 -tax rate-> land tax
 -tax rate-> market
@@ -30,7 +29,6 @@ policy roots:
 -insurance-> job
 -max debt-> corporation
 -carbon tax-> technology
-
 
 shadow corporations animal/land:
 corporation owns shadow animal and land

@@ -3,12 +3,11 @@
 ## Global Ecology
 Global pollution is quantified into a single variable: atmospheric carbon dioxide levels
 
-
 -increases based on job impact
 -recovers X/block per unit land based on that land's flora
 
 ## Land Ecology
-Land ecology is quantified into several variables which affect each other as well
+Per land ecology is quantified into several variables which affect each other
 
 #### pollution
 - recovers X/block
