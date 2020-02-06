@@ -1,55 +1,167 @@
-RECIPE resource_potato
-INPUTS
+ITEM potato
+DESC your basic potato
+REQUIRES
+  exclusive 1 animal
   1 time
-NEEDS
-  1 animal
-
-RECIPE research_wood
 INPUTS
-  100 time
-NEEDS
-  1 animal
+  1 potato
+QUANTITY 2
 
-RECIPE item_wood_spade
+ITEM research_wood
+DESC basic knowledge of wood
+TIER 2
+REQUIRES
+  exclusive 2 animal
+  50 time
+INPUTS
+  100 potato
+
+ITEM wood
+DESC a piece of wood
+REQUIRES
+  exclusive 1 animal
 INPUTS
   10 time
-  5 potato
-NEEDS
-  1 animal
+  10 potato
+
+ITEM item_wood_spade
 DESC improves farming productivity
-
-RECIPE research_stone
+REQUIRES
+  research_wood
+  exclusive 1 animal
 INPUTS
-  100 time
+  1 wood
+  10 time
+  10 potato
 
-RECIPE research_chemistry_1
+RECIPE potato_with_wood_spade
+DESC using tools improves farming efficiency
+REQUIRES
+  exclusive 1 wood_spade
+  exclusive 1 animal
 INPUTS
-  100 time
-NEEDS
+  4 time
+  4 potato
+OUTPUTS
+  9 potato
+
+ITEM research_stone
+DESC basic knowledge of stone
+TIER 2
+REQUIRES
+  exclusive 2 animal
+  50 time
+INPUTS
+  100 potato
+
+ITEM stone
+DESC a rock
+REQUIRES
+  exclusive 1 animal
+  20 time
+INPUTS
+  20 potato
+
+ITEM stone_hammer
+DESC a simple hammer made of stone
+REQUIRES
+  exclusive 1 animal
+  20 time
+INPUTS
+  1 wood
+  1 stone
+  20 potato
+
+ITEM research_chemistry
+DESC basic knowledge of chemistry
+TIER 3
+REQUIRES
   research_wood
   research_stone
+  exclusive 3 animals
+  75 time
+INPUTS
+  225 potato
 
+ITEM organic_fertilizer
+DESC it's only organic because we haven't invented synthetic fertilizers yet
+REQUIRES
+  research_chemistry
+  exclusive 1 animal
+  5 time
+INPUTS
+  6 potato
+QUANTITY 5
 
+RECIPE potato_with_organic_fertilizer
+REQUIRES
+  exclusive 1 animal
+  4 time
+INPUTS
+  1 organic_fertilizer
+  4 potato
+OUTPUTS
+  11 potato
 
-starting:
+RECIPE potato_with_organic_fertilizer_and_spade
+DESC the pinnacle of tier 3 potato farming
+REQUIRES
+  exclusive 1 wood_spade
+  exclusive 1 animal
+  4 time
+INPUTS
+  1 organic_fertilizer
+  4 potato
+OUTPUTS
+  12 potato
 
-basic farming
+ITEM research_construction
+DESC basic knowledge of construction
+TIER 3
+REQUIRES
+  research_wood
+  research_stone
+  exclusive 3 animal
+  100 time
+INPUTS
+  300 potato
 
+ITEM wood_house
+DESC a simple house of wood
+REQUIRES
+  research_construction
+  exclusive 1 animal
+  50 time
+INPUTS
+  10 wood
+  50 potato
 
-wood - wooden tools, <improve agriculture>
-stone - stone tools, <improve processing>
-chemistry 1 - coal
-construction 1 - stone/wood buildings
-machines 1 - mill, wind power, hydro power, <improve processing>
-fossil fuels - petroleum
-electricity 1 - nothing
-mining 1 - iron ore
-chemistry 2 - iron
-machines 2 - oil pump, metal tools, <improve agriculture>
-chemistry 3 - steel, cement
-construction 2 - supported buildings
-machines 3 - gas engine, <improve agriculture>, <improve processing>
-electricity 2 - lighting
-electricity 3 - electric motor, <improve agriculture>, <improve processing>
-machines 4 - <improve agriculture>
-electricity 4 - solar power
+ITEM stone_house
+DESC a simple house of stone
+REQUIRES
+  research_construction
+  exclusive 1 animal
+  50 time
+INPUTS
+  5 stone
+  50 potato
+
+ITEM research_wood_advanced
+DESC advanced knowledge of wood
+TIER 3
+REQUIRES
+  research_wood
+  3 animal
+  100 time
+INPUTS
+  300 potato
+
+ITEM research_stone_advanced
+DESC advanced knowledge of stone
+TIER 3
+REQUIRES
+  research_stone
+  3 animal
+  100 time
+INPUTS
+  300 potato
