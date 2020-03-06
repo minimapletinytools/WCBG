@@ -1,9 +1,9 @@
-const VyperStorage = artifacts.require("VyperStorage");
-const PotatoTesting = artifacts.require("PotatoTesting");
+const VyperTesting = artifacts.require("VyperTesting");
+const SolidityTesting = artifacts.require("SolidityTesting");
 
-contract("VyperStorage", () => {
+contract("VyperTesting", () => {
   it("...should store the value 89.", async () => {
-    const storage = await VyperStorage.deployed();
+    const storage = await VyperTesting.deployed();
 
     // Set value of 89
     await storage.set(89);
@@ -15,10 +15,10 @@ contract("VyperStorage", () => {
   });
 });
 
-contract("PotatoTesting", () => {
+contract("SolidityTesting", () => {
   console.log("🥔🥔🥔")
   it("...should store the value 89.", async () => {
-    const storage = await PotatoTesting.deployed();
+    const storage = await SolidityTesting.deployed();
 
     var storeVal = 89;
     var balanceVal = 100;
@@ -39,7 +39,7 @@ contract("PotatoTesting", () => {
     assert.equal(v3, balanceVal, "The value 0 was not stored.");
 
     var sender = await storage.getSender();
-    var senderLibrary = await storage.getSenderFromPotatoLibrary();
+    var senderLibrary = await storage.getSenderFromLibraryTesting();
     assert.equal(senderLibrary, sender, "the senders should be the same.");
   });
 });

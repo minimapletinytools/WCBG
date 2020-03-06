@@ -1,6 +1,7 @@
 pragma solidity 0.6.0;
 
-library PotatoLibrary {
+// just for testing
+library LibraryTesting {
   struct Data {
     mapping(address => int) storedValue;
     mapping(address => uint) balances;

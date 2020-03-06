@@ -1,5 +1,7 @@
 pragma solidity 0.6.0;
 
+// this contract keeps a trail of all contract upgrades
+// see https://www.trufflesuite.com/docs/truffle/getting-started/running-migrations
 contract Migrations {
   address public owner;
   uint public last_completed_migration;

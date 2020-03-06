@@ -1,9 +1,9 @@
 pragma solidity 0.6.0;
 
-import "./PotatoLibrary.sol";
+import "./LibraryTesting.sol";
 
-contract PotatoTesting {
-  PotatoLibrary.Data potatoLibraryData;
+contract SolidityTesting {
+  LibraryTesting.Data potatoLibraryData;
   mapping(address => MyNumber) public mStore;
   struct MyNumber {
     int num;
@@ -24,22 +24,22 @@ contract PotatoTesting {
     myNum.num = num;
 
     // test library stuff
-    PotatoLibrary.setValue(potatoLibraryData, num);
-    PotatoLibrary.setBalance(potatoLibraryData);
+    LibraryTesting.setValue(potatoLibraryData, num);
+    LibraryTesting.setBalance(potatoLibraryData);
   }
   function retrieve() public view returns (int,int,int,uint) {
     int r0 = myNumber.num;
     int r1 = mStore[msg.sender].num;
-    int r2 = PotatoLibrary.getValue(potatoLibraryData);
-    uint r3 = PotatoLibrary.getBalance(potatoLibraryData);
+    int r2 = LibraryTesting.getValue(potatoLibraryData);
+    uint r3 = LibraryTesting.getBalance(potatoLibraryData);
     return (r0, r1, r2, r3);
   }
 
   function getSender() public view returns (address) {
     return msg.sender;
   }
-  function getSenderFromPotatoLibrary() public view returns (address) {
-    return PotatoLibrary.getSender();
+  function getSenderFromLibraryTesting() public view returns (address) {
+    return LibraryTesting.getSender();
   }
 
 }

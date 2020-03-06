@@ -1,14 +1,14 @@
-var VyperStorage = artifacts.require("VyperStorage");
-var PotatoTesting = artifacts.require("PotatoTesting");
-var PotatoLibrary = artifacts.require("PotatoLibrary");
+var VyperTesting = artifacts.require("VyperTesting");
+var SolidityTesting = artifacts.require("SolidityTesting");
+var LibraryTesting = artifacts.require("LibraryTesting");
 
 // deploy test vyper contract
 module.exports = function(deployer) {
-  deployer.deploy(VyperStorage);
+  deployer.deploy(VyperTesting);
 
-  deployer.deploy(PotatoLibrary);
-  deployer.link(PotatoLibrary, PotatoTesting);
+  deployer.deploy(LibraryTesting);
+  deployer.link(LibraryTesting, SolidityTesting);
   // or just
   // deployer.autolink();
-  deployer.deploy(PotatoTesting);
+  deployer.deploy(SolidityTesting);
 };
