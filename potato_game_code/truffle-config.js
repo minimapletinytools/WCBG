@@ -30,6 +30,11 @@ var MNENOMIC = "someone success life suggest gorilla oak cruel eagle check sessi
 var APIKEY = "2edbdd953f714eeab3f0001bb0b96b91"
 
 module.exports = {
+  compilers: {
+     solc: {
+       version: "0.6.0"
+     }
+  },
   networks: {
     development: {
       host: "127.0.0.1",

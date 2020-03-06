@@ -1,3 +1,5 @@
+pragma solidity 0.6.0;
+
 library PotatoLibrary {
   struct Data {
     mapping(address => int) storedValue;
