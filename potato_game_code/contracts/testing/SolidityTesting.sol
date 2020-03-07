@@ -8,6 +8,12 @@ contract SolidityTesting {
   struct MyNumber {
     int num;
   }
+  uint256 public ctorNum;
+
+  constructor(uint256 num) public {
+      ctorNum = num;
+  }
+
   MyNumber myNumber;
   // this won't work sadly
   //function setSomeNumber(MyNumber storage myNum, int newNum) {

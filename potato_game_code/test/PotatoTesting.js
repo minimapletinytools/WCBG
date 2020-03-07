@@ -41,5 +41,8 @@ contract("SolidityTesting", () => {
     var sender = await storage.getSender();
     var senderLibrary = await storage.getSenderFromLibraryTesting();
     assert.equal(senderLibrary, sender, "the senders should be the same.");
+
+    num = await storage.ctorNum()
+    assert.equal(12, num, "ctor number should be 12")
   });
 });
