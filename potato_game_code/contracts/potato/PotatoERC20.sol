@@ -75,8 +75,8 @@ contract PotatoERC20 is ERC20 {
      *
      * - can only be called by authorized contract
      */
-    function govMint(address account, uint256 amount) internal virtual {
-        require(government == _msgSender());
+    function govMint(address account, uint256 amount) public {
+        require(address(government) == _msgSender());
         _mint(account, amount);
     }
 

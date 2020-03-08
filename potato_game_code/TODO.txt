@@ -1,1 +1,8 @@
 ::truffle notes::
+
+# instal latest version of openzeppelin (for solidity 0.6)
+npm install --save-dev @openzeppelin/contracts@beta
+# switch to node10 truffle or whatever https://github.com/trufflesuite/truffle/issues/2070
+npm i -g truffle@nodeLTS
+# whatever packages https://github.com/rkalis/truffle-assertions
+npm install truffle-assertions
