@@ -1,3 +1,5 @@
+const truffleAssert = require('truffle-assertions');
+
 const VyperTesting = artifacts.require("VyperTesting");
 const SolidityTesting = artifacts.require("SolidityTesting");
 
@@ -27,6 +29,25 @@ contract("VyperTesting", () => {
 
 contract("SolidityTesting", () => {
   console.log("🥔🥔🥔")
+  it("...handles truffle-assertion stuff as expected", async () => {
+    const testContract = await SolidityTesting.deployed();
+
+    truffleAssert.fails(
+      testContract.testRevert(),
+      truffleAssert.ErrorType.REVERT,
+      "testing"
+    );
+
+    var num = 5;
+    var result = await testContract.testEvent(num);
+    //console.log(result);
+    //result.logs.forEach(l => console.log(l.args));
+    // there's a better way to test for BNs...
+    truffleAssert.eventEmitted(result, 'MyTestEvent', (ev) => {
+      return ev[0].toString() == num;
+    });
+  });
+
   it("...should store the value 89.", async () => {
     const storage = await SolidityTesting.deployed();
 

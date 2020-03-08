@@ -48,4 +48,13 @@ contract SolidityTesting {
     return LibraryTesting.getSender();
   }
 
+  event MyTestEvent(uint256);
+
+  function testEvent(uint256 num) public {
+    emit MyTestEvent(num);
+  }
+  function testRevert() public {
+    revert("testing");
+  }
+
 }
