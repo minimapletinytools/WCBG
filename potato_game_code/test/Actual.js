@@ -14,12 +14,15 @@ contract("Government", accounts => {
     const testAddress = await gov.testAddress();
     const balance = await testToken.balanceOf(testAddress);
     assert(100, balance, "expected 100");
-
   });
 });
 
 contract("PotatoERC20", accounts => {
-  it("... should do ERC20 things", async () => {
-
+  it("... has restricted access on its methods", async () => {
+    const token = await PotatoERC20.deployed();
+    truffleAssert.fails(
+      token.govMint(accounts[0], 10),
+      truffleAssert.ErrorType.REVERT
+    );
   });
 });
