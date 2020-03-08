@@ -1,10 +1,12 @@
 pragma solidity ^0.6.0;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
+import "./PotatoERC20.sol";
 
 /// @title Government
 contract Government {
     using SafeMath for uint256;
+
 
     event Potato();
 

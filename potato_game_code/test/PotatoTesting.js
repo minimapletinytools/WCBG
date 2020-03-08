@@ -1,6 +1,16 @@
 const VyperTesting = artifacts.require("VyperTesting");
 const SolidityTesting = artifacts.require("SolidityTesting");
 
+contract("accounts", accounts => {
+  it("... should do ERC20 things", async () => {
+    console.log(accounts);
+    accounts.forEach(function(acc, i) {
+      web3.eth.getBalance(acc).then(function(b){console.log(b);});
+    });
+  });
+});
+
+
 contract("VyperTesting", () => {
   it("...should store the value 89.", async () => {
     const storage = await VyperTesting.deployed();

@@ -65,4 +65,19 @@ contract PotatoERC20 is ERC20 {
         return true;
     }
 
+    /** @dev Creates `amount` tokens and assigns them to `account`, increasing
+     * the total supply. Note that the government does not actually mint tokens in most cases.
+     * Usually, tokens are created through labor.
+     *
+     * Emits a {Transfer} event with `from` set to the zero address.
+     *
+     * Requirements
+     *
+     * - can only be called by authorized contract
+     */
+    function govMint(address account, uint256 amount) internal virtual {
+        require(government == _msgSender());
+        _mint(account, amount);
+    }
+
 }
