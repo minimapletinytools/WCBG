@@ -9,9 +9,6 @@ import "./Government.sol";
  * ERC721 for assets
  */
 contract PotatoERC721 is ERC721 {
-  using SafeMath for uint256;
-
-
   Government government;
 
   constructor(address _gov) public {

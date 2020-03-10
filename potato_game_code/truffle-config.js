@@ -41,6 +41,8 @@ module.exports = {
       //port: 9545, // for truffle develop
       port: 8545, // for ganache-cli
       network_id: "*", // Match any network id
+
+      gas: 200000000,
     },
     ropsten: {
       provider: () =>
@@ -64,5 +66,12 @@ module.exports = {
       gasLimit: 200000000,
       default_balance_ether: 1000000000000000, // $$$$
     }*/
+
+    solc: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
   }
 };
