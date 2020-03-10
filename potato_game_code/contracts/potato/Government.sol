@@ -23,6 +23,10 @@ contract Government is Context {
   event Potato();
 
   // data
+
+  // setup period flag
+  bool isInit;
+
   // mapping from tokenId to AnimalData
   mapping(uint256 => AnimalLib.AnimalData) animalDataMap;
 
@@ -42,24 +46,28 @@ contract Government is Context {
     //createResourcesAndAssets();
   }
 
-  // TODO add modifiers so it can only be called once with setup account
-  // need to set up special permission for deployment transactions (to split out gas cost)
-  // creates all token contracts
-  function createResourcesAndAssets() public {
-    emit Potato();
-    // setup resources
-    for(uint i = 0; i < NUMRESOURCES; ++i) {
-      resourcesC[i] = new PotatoERC20(address(this));
-    }
-    // setup special resources
-    potatoC = resourcesC[0];
-    voiceC = new PotatoERC20(address(this));
-    debtC = new PotatoERC20(address(this));
-    // setup assets
-    landC = new PotatoERC721(address(this));
-    animalC = new AnimalERC721(address(this));
+  function canInit() public returns (bool) {
+    // TODO require only to be called from setup account
+    return !isInit;
   }
 
+  function connectTokenContracts(
+    address[NUMRESOURCES] memory resources,
+    address debtAddr,
+    address voiceAddr,
+    address landAddr,
+    address animalAddr
+  ) public {
+    assert(canInit());
+    for(uint i = 0; i < NUMRESOURCES; ++i) {
+      resourcesC[i] = PotatoERC20(resources[i]);
+    }
+    potatoC = resourcesC[0];
+    debtC = PotatoERC20(debtAddr);
+    voiceC = PotatoERC20(voiceAddr);
+    landC = PotatoERC721(landAddr);
+    animalC = AnimalERC721(animalAddr);
+  }
 
   ///////////////////////////////
   // BANK HELPERS
