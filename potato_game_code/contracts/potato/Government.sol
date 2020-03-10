@@ -1,24 +1,30 @@
 pragma solidity ^0.6.0;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/GSN/Context.sol";
 import "./FixidityLib.sol";
 import "./PotatoERC20.sol";
 import "./PotatoERC721.sol";
+import "./AnimalERC721.sol";
+import "./AnimalLib.sol";
 
 
 
 /// @title Government
-contract Government {
+contract Government is Context {
+  // definitions
   enum Resources {
     POTATOES,
     CORN,
     CHEESE
   }
-  uint public NUMRESOURCES = 3;
-
+  uint constant public NUMRESOURCES = 3;
   using SafeMath for uint256;
-
   event Potato();
+
+  // data
+  // mapping from tokenId to AnimalData
+  mapping(uint256 => AnimalLib.AnimalData) animalDataMap;
 
   // token addresses
   PotatoERC20[] public resourcesC = new PotatoERC20[](NUMRESOURCES);
@@ -26,7 +32,7 @@ contract Government {
   PotatoERC20 public voiceC;
   PotatoERC20 public debtC; // debt is not actually fungible. The collataral situation is also not so clear.
   PotatoERC721 public landC;
-  PotatoERC721 public animalC;
+  AnimalERC721 public animalC;
 
   ///////////////////////////////
   // SETUP
@@ -51,14 +57,14 @@ contract Government {
     debtC = new PotatoERC20(address(this));
     // setup assets
     landC = new PotatoERC721(address(this));
-    animalC = new PotatoERC721(address(this));
+    animalC = new AnimalERC721(address(this));
   }
 
 
   ///////////////////////////////
   // BANK HELPERS
   ///////////////////////////////
-  function transferToGov(address corp, uint256 amount) internal returns (uint256) {
+  function _transferToGov(address corp, uint256 amount) internal returns (uint256) {
     uint256 balance = potatoC.balanceOf(corp);
     if(amount > balance) {
       uint256 newDebt = amount - balance;
@@ -77,24 +83,48 @@ contract Government {
     return 0;
   }
 
-  function levyTax(address corp, int256 f_tax, int256 f_amount, uint128 blocks) internal {
+  function _levyTax(address corp, int256 f_tax, int256 f_amount, uint256 blocks) internal {
     if(f_tax == 0 || f_amount == 0 || blocks == 0) {
       return;
     }
     // there is some round off error, prob not a big deal
-    int256 f_taxPerBlock = FixidityLib.multiply(f_tax, f_amount);
-    int256 f_taxAmount =  FixidityLib.multiply(f_taxPerBlock, FixidityLib.newFixed(blocks));
-    basicTax(corp, f_taxAmount);
+    // TODO
+    //int256 f_taxPerBlock = FixidityLib.multiply(f_tax, f_amount);
+    //int256 f_taxAmount =  FixidityLib.multiply(f_taxPerBlock, FixidityLib.newFixed(blocks));
+    //int256 f_taxAmount =  FixidityLib.multiply(f_taxPerBlock, FixidityLib.newFixed(0));
+    int256 f_taxAmount = 0;
+    _basicTax(corp, f_taxAmount);
   }
 
-  function basicTax(address corp, int256 f_amount) internal {
-    int256 amount = FixidityLib.fromFixed(f_amount);
+  function _basicTax(address corp, int256 f_amount) internal {
+    //int256 amount = FixidityLib.fromFixed(f_amount);
+    int256 amount = 0;
     assert(amount > 0);
-    transferToGov(corp, uint256(amount));
+    _transferToGov(corp, uint256(amount));
   }
 
   ///////////////////////////////
-  // ASSET taxation
+  // ANIMAL assets
+  ///////////////////////////////
+  function SetAnimalPrice(uint256 animal) public {
+    address owner = animalC.ownerOf(animal);
+    require( owner == _msgSender());
+    AnimalLib.AnimalData storage data = animalDataMap[animal];
+    _taxAnimal(data, owner);
+  }
+
+  // animal internal functions
+  function _taxAnimal(AnimalLib.AnimalData storage data, address owner) internal {
+      uint256 numBlocks = block.number - data.lastTaxUpdate;
+      // TODO set tax
+      //int256 tax = FixidityLib.newFixed(0);
+      //uint256 value = FixidityLib.newFixed(data.value);
+      _levyTax(owner, 0, 0, numBlocks);
+      data.lastTaxUpdate = block.number;
+  }
+
+  ///////////////////////////////
+  // ANIMAL operations
   ///////////////////////////////
 
 

@@ -31,6 +31,7 @@ async function setupGovernment() {
 
 
 contract("Government", accounts => {
+
   it("... has proper authority over PotatoERC20", async () => {
     const gov = await Government.deployed();
     const testTokenAddress = await gov.testToken();
