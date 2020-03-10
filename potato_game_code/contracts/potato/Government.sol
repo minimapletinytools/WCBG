@@ -103,8 +103,7 @@ contract Government is Context {
   }
 
   function _basicTax(address corp, int256 f_amount) internal {
-    //int256 amount = FixidityLib.fromFixed(f_amount);
-    int256 amount;
+    int256 amount = FixidityLib.fromFixed(f_amount);
     assert(amount > 0);
     _transferToGov(corp, uint256(amount));
   }
@@ -123,9 +122,9 @@ contract Government is Context {
   function _taxAnimal(AnimalLib.AnimalData storage data, address owner) internal {
       uint256 numBlocks = block.number - data.lastTaxUpdate;
       // TODO set tax
-      //int256 tax = FixidityLib.newFixed(0);
-      //uint256 value = FixidityLib.newFixed(data.value);
-      _levyTax(owner, 0, 0, numBlocks);
+      int256 f_tax = FixidityLib.newFixed(0);
+      int256 f_value = FixidityLib.newFixed(int256(data.value));
+      _levyTax(owner, f_tax, f_value, numBlocks);
       data.lastTaxUpdate = block.number;
   }
 
