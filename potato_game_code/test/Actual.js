@@ -4,11 +4,25 @@ const Government = artifacts.require("Government");
 const PotatoERC20 = artifacts.require("PotatoERC20");
 const PotatoERC721 = artifacts.require("PotatoERC721");
 
+function printGas(txr, name) {
+  s = "";
+  if (name) {
+    s += name +": ";
+  }
+  // gasUsed
+  s += txr.receipt.gasUsed + " ";
+  // number of simple transactions
+  s += Math.trunc(txr.receipt.gasUsed/21000) + " ";
+  // ratio of block gas limit
+  s += txr.receipt.gasUsed/10000000;
+  console.log(s);
+}
+
 async function setupGovernment() {
-  console.log("hiii");
   const gov = await Government.deployed();
   try {
-    await gov.createResourcesAndAssets({gas: 200000000 });
+    r = await gov.createResourcesAndAssets({gas: 200000000 });
+    printGas(r, "setupGovernment");
   } catch(error) {
     console.log(error);
   }
@@ -36,14 +50,13 @@ contract("Government", accounts => {
     var resources = [];
     for (let i = 0; i < numResources; ++i) {
       resources[i] = await gov.resourcesC(i);
-      console.log(resources[i]);
+      //console.log(resources[i]);
     }
-    console.log(resources);
     const debt = await gov.debtC();
     const voice = await gov.voiceC();
     resources.push(debt);
     resources.push(voice);
-    console.log(resources);
+    //console.log(resources);
   });
 });
 

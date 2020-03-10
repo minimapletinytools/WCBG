@@ -5,9 +5,9 @@ const SolidityTesting = artifacts.require("SolidityTesting");
 
 contract("accounts", accounts => {
   it("... should do ERC20 things", async () => {
-    console.log(accounts);
+    //console.log(accounts);
     accounts.forEach(function(acc, i) {
-      web3.eth.getBalance(acc).then(function(b){console.log(b);});
+      //web3.eth.getBalance(acc).then(function(b){console.log(b);});
     });
   });
 });
