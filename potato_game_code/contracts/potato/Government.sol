@@ -89,16 +89,14 @@ contract Government is Context {
     }
     // there is some round off error, prob not a big deal
     // TODO
-    //int256 f_taxPerBlock = FixidityLib.multiply(f_tax, f_amount);
-    //int256 f_taxAmount =  FixidityLib.multiply(f_taxPerBlock, FixidityLib.newFixed(blocks));
-    //int256 f_taxAmount =  FixidityLib.multiply(f_taxPerBlock, FixidityLib.newFixed(0));
-    int256 f_taxAmount = 0;
+    int256 f_taxPerBlock = FixidityLib.multiply(f_tax, f_amount);
+    int256 f_taxAmount =  FixidityLib.multiply(f_taxPerBlock, FixidityLib.newFixed(int256(blocks)));
     _basicTax(corp, f_taxAmount);
   }
 
   function _basicTax(address corp, int256 f_amount) internal {
     //int256 amount = FixidityLib.fromFixed(f_amount);
-    int256 amount = 0;
+    int256 amount;
     assert(amount > 0);
     _transferToGov(corp, uint256(amount));
   }

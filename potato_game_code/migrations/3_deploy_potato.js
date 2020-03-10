@@ -1,3 +1,4 @@
+var Helper = artifacts.require("Helper");
 var Government = artifacts.require("Government");
 var PotatoERC20 = artifacts.require("PotatoERC20");
 var PotatoERC721 = artifacts.require("PotatoERC721");
@@ -6,15 +7,20 @@ var AnimalLib = artifacts.require("AnimalLib");
 
 // deploy test vyper contract
 module.exports = function(deployer) {
+  deployer.deploy(Helper);
   deployer.deploy(FixidityLib);
   deployer.deploy(AnimalLib);
   deployer.link(AnimalLib, Government);
   deployer.link(FixidityLib, Government);
 
-  deployer.deploy(Government).then(async function(gov) {
+  deployer.deploy(Government,{gas: 200000000}).then(async function(gov) {
     console.log(gov.transactionHash);
+    tx = await web3.eth.getTransaction(gov.transactionHash)
+    console.log(parseInt(tx.gas));
+    console.log(tx.input.length);
     txr = await web3.eth.getTransactionReceipt(gov.transactionHash)
-    console.log(txr);
+    console.log(parseInt(txr.gasUsed));
+    console.log(parseInt(txr.cumulativeGasUsed));
 
     // deploy test token contract, eventually this will be deployed by gov contract maybe...
     erc20 = await deployer.deploy(PotatoERC20, Government.address);
