@@ -30,12 +30,15 @@ async function setupGovernment() {
   return gov;
 }
 
+async function printCapacity(contract, name) {
+  const instance = await contract.deployed();
+  const helper = await Helper.deployed();
+  const size = await helper.codeSize(instance.address);
+  console.log(instance.constructor._json.contractName + ": " + size + " bytes out of 24577 %" + size/24577 + " capacity.");
+}
 contract("Helper", accounts => {
   it("print code sizes", async () => {
-    const helper = await Helper.deployed();
-    const gov = await Government.deployed();
-    const govSize = await helper.codeSize(gov.address);
-    console.log("Government.sol: " + govSize + " bytes");
+    printCapacity(Government);
   });
 });
 
