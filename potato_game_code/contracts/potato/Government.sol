@@ -13,7 +13,7 @@ contract Government {
       CORN,
       CHEESE
     }
-    uint NUMRESOURCES = 0;
+    uint public NUMRESOURCES = 3;
 
     using SafeMath for uint256;
 
@@ -21,12 +21,12 @@ contract Government {
 
 
     // token addresses
-    PotatoERC20[] resources = new PotatoERC20[](NUMRESOURCES);
-    PotatoERC20 potatoC;
-    PotatoERC20 voiceC;
-    PotatoERC20 debtC;
-    PotatoERC721 landC;
-    PotatoERC721 animalC;
+    PotatoERC20[] public resourcesC = new PotatoERC20[](NUMRESOURCES);
+    PotatoERC20 public potatoC;
+    PotatoERC20 public voiceC;
+    PotatoERC20 public debtC; // debt is not actually fungible. The collataral situation is also not so clear.
+    PotatoERC721 public landC;
+    PotatoERC721 public animalC;
 
 
     ///////////////////////////////
@@ -34,18 +34,23 @@ contract Government {
     ///////////////////////////////
     constructor() public {
       DELETE_test_ctor();
+      //createResourcesAndAssets();
     }
 
+    // TODO add modifiers so it can only be called once with setup account
+    // need to set up special permission for deployment transactions (to split out gas cost)
     // creates all token contracts
-    function createResourcesAndAssets() internal {
+    function createResourcesAndAssets() public {
+      emit Potato();
       // setup resources
       for(uint i = 0; i < NUMRESOURCES; ++i) {
-        resources[i] = new PotatoERC20(address(this));
+        resourcesC[i] = new PotatoERC20(address(this));
       }
       // setup special resources
-      potatoC = resources[0];
+      potatoC = resourcesC[0];
       voiceC = new PotatoERC20(address(this));
       debtC = new PotatoERC20(address(this));
+      // setup assets
       landC = new PotatoERC721(address(this));
       animalC = new PotatoERC721(address(this));
     }

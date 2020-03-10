@@ -17,7 +17,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -30,7 +31,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -194,7 +196,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1084,
+                        "referencedDeclaration": 3225,
                         "src": "288:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -279,7 +281,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1084,
+                        "referencedDeclaration": 3225,
                         "src": "339:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -856,7 +858,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1084,
+                        "referencedDeclaration": 3225,
                         "src": "288:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -941,7 +943,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1084,
+                        "referencedDeclaration": 3225,
                         "src": "339:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1395,6 +1397,12 @@
     "version": "0.6.0+commit.26b70077.Emscripten.clang"
   },
   "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xb1974B39F129e53BE5bCC48daA631De1B790d8E7",
+      "transactionHash": "0x4bd48272ab61140bf2c9ae5d55b2725e2b47bcd17a3d6ce74f6c070af8b6a7a7"
+    },
     "1575690198816": {
       "events": {},
       "links": {},
@@ -1403,7 +1411,8 @@
     }
   },
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-03-07T00:40:20.750Z",
+  "updatedAt": "2020-03-09T22:19:12.369Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },

@@ -38,8 +38,9 @@ module.exports = {
   networks: {
     development: {
       host: "127.0.0.1",
-      port: 9545,
-      network_id: "*" // Match any network id
+      //port: 9545, // for truffle develop
+      port: 8545, // for ganache-cli
+      network_id: "*", // Match any network id
     },
     ropsten: {
       provider: () =>
@@ -52,6 +53,16 @@ module.exports = {
       network_id: 1,
       gas: 3000000,
       gasPrice: 10000000000
-    }
+    },
+
+    // settings for truffle develop
+    // the gas limit thing doesn't seem to work so just use ganache..
+    /*
+    develop: {
+      port: 8545,
+      network_id: 20,
+      gasLimit: 200000000,
+      default_balance_ether: 1000000000000000, // $$$$
+    }*/
   }
 };
