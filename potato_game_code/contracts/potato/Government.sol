@@ -13,7 +13,9 @@ import "./AnimalLib.sol";
 
 /// @title Government
 contract Government is Context {
-  // definitions
+  ///////////////////////////////
+  // DEFINITIONS
+  ///////////////////////////////
   enum Resources {
     POTATOES,
     CORN,
@@ -23,10 +25,13 @@ contract Government is Context {
   using SafeMath for uint256;
   event Potato();
 
-  // data
+  ///////////////////////////////
+  // DATA
+  ///////////////////////////////
 
-  // setup period flag
+  // setup params
   bool isInit;
+  address operator;
 
   // mapping from tokenId to AnimalData
   mapping(uint256 => AnimalLib.AnimalData) animalDataMap;
@@ -44,14 +49,15 @@ contract Government is Context {
   ///////////////////////////////
   // SETUP
   ///////////////////////////////
-  constructor() public {
+  constructor(address _operator) public {
+    operator = _operator;
     DELETE_test_ctor();
 
     PolicyLib.initializeDefaultPolicy(policy);
   }
 
   function canInit() public returns (bool) {
-    // TODO require only to be called from setup account
+    require(_msgSender() == operator);
     return !isInit;
   }
 
@@ -71,6 +77,11 @@ contract Government is Context {
     voiceC = PotatoERC20(voiceAddr);
     landC = PotatoERC721(landAddr);
     animalC = AnimalERC721(animalAddr);
+  }
+
+  function genesis() public {
+    assert(canInit());
+
   }
 
   ///////////////////////////////
@@ -139,10 +150,10 @@ contract Government is Context {
 
   function PurchaseAnimal(uint256 animalId, uint256 newValue) public {
     AnimalLib.AnimalData storage animal = animalDataMap[animalId];
-    address buyer = _msgSender();
     address seller = animalC.ownerOf(animalId);
-    _updateAnimal(animal);
-    potatoC.transferFrom(buyer, seller, animal.value);
+    address buyer = _msgSender();
+    _updateAnimal(animal, seller);
+    potatoC.transferFrom(seller, buyer, animal.value);
     animal.value = newValue;
   }
 
@@ -156,14 +167,14 @@ contract Government is Context {
   }
 
 
-  function _updateAnimal(AnimalLib.AnimalData storage animal) internal {
+  function _updateAnimal(AnimalLib.AnimalData storage animal, address owner) internal {
     uint256 numBlocks = block.number - animal.lastUpdate;
 
     // DELETE should be done sep
     //taxAnimal(animal);
 
-    // TODO give master VOICE
-    //animal.master.voiceCredits += VC_PER_BLOCK * numBlocks;
+    // give corporation VOICE
+    voiceC.govMint(owner, policy.voice_per_animal_per_block * numBlocks);
 
     // TODO feed the animal to full
     //feedAnimal(animal, ENERGY_PER_BLOCK_BASE * numBlocks, MAX_ENERGY);

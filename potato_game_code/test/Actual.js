@@ -37,6 +37,7 @@ async function printCapacity(contract, name) {
   const size = await helper.codeSize(instance.address);
   console.log(instance.constructor._json.contractName + ": " + size + " bytes out of 24577 %" + size/24577 + " capacity.");
 }
+
 contract("Helper", accounts => {
   it("print code sizes", async () => {
     printCapacity(Government);
@@ -58,13 +59,7 @@ contract("Government", accounts => {
 
   it("PurchaseAnimal", async () => {
     const gov = await Government.deployed();
-    const testTokenAddress = await gov.testToken();
-    const testToken = await PotatoERC20.at(testTokenAddress);
-    const test_mint_rslt = await gov.DELETE_test_mint();
-    assert(true, test_mint_rslt, "expected true");
-    const testAddress = await gov.testAddress();
-    const balance = await testToken.balanceOf(testAddress);
-    assert(100, balance, "expected 100");
+    //gov.PurchaseAnimal();
   });
 
   it("print resource and asset addresses", async () => {

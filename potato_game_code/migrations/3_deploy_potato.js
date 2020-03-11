@@ -6,6 +6,8 @@ var FixidityLib = artifacts.require("FixidityLib");
 var AnimalLib = artifacts.require("AnimalLib");
 var PolicyLib = artifacts.require("PolicyLib");
 
+const operator = "0x515854762Aa39c9FAeF4be59134F55894e68539f";
+
 async function logGas(instance, name) {
   s = "";
   s += instance.constructor._json.contractName + ": "
@@ -27,7 +29,7 @@ module.exports = function(deployer) {
   deployer.link(PolicyLib, Government);
 
   // deploy government
-  deployer.deploy(Government, {gas: 200000000}).then(async function(gov) {
+  deployer.deploy(Government, operator, {gas: 200000000}).then(async function(gov) {
     await logGas(gov);
 
     // deploy token contracts
