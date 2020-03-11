@@ -1,6 +1,7 @@
 pragma solidity ^0.6.0;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/math/Math.sol";
 import "@openzeppelin/contracts/GSN/Context.sol";
 import "./FixidityLib.sol";
 import "./PotatoERC20.sol";
@@ -91,19 +92,34 @@ contract Government is Context {
     return 0;
   }
 
-  function _levyTax(address corp, int256 f_tax, int256 f_amount, uint256 blocks) internal {
-    if(f_tax == 0 || f_amount == 0 || blocks == 0) {
-      return;
+  // TODO consider embedding this into ERC20 contract
+  // always transfer potatoes using this internal function such that debt is paid automatically
+  function _transfer(address sender, address recipient, uint256 amount) internal {
+    uint256 balance = potatoC.balanceOf(sender);
+    require(balance >= amount);
+    uint256 debt = debtC.balanceOf(recipient);
+    uint256 toGov = Math.min(debt, amount);
+    if (toGov > 0) {
+      potatoC.transferFrom(sender, address(this), toGov);
     }
-    // there is some round off error, prob not a big deal
-    // TODO
-    int256 f_taxPerBlock = FixidityLib.multiply(f_tax, f_amount);
-    int256 f_taxAmount =  FixidityLib.multiply(f_taxPerBlock, FixidityLib.newFixed(int256(blocks)));
-    _basicTax(corp, f_taxAmount);
+    if (amount - toGov > 0) {
+      potatoC.transferFrom(sender, recipient, amount - toGov);
+    }
   }
 
-  function _basicTax(address corp, int256 f_amount) internal {
-    int256 amount = FixidityLib.fromFixed(f_amount);
+  function _levyTax(address corp, int256 f_tax, uint256 amount, uint256 blocks) internal {
+    if(f_tax == 0 || amount == 0 || blocks == 0) {
+      return;
+    }
+
+    int256 f_taxPerBlock = FixidityLib.multiply(f_tax, FixidityLib.newFixed(int256(amount)));
+    int256 f_taxAmount =  FixidityLib.multiply(f_taxPerBlock, FixidityLib.newFixed(int256(blocks)));
+    int256 taxAmount = FixidityLib.fromFixed(f_taxAmount);
+    assert(taxAmount > 0);
+    _basicTax(corp, uint256(taxAmount));
+  }
+
+  function _basicTax(address corp, uint256 amount) internal {
     assert(amount > 0);
     _transferToGov(corp, uint256(amount));
   }
@@ -118,20 +134,47 @@ contract Government is Context {
     _taxAnimal(data, owner);
   }
 
-  // animal internal functions
-  function _taxAnimal(AnimalLib.AnimalData storage data, address owner) internal {
-      uint256 numBlocks = block.number - data.lastTaxUpdate;
-      // TODO set tax
-      int256 f_tax = FixidityLib.newFixed(0);
-      int256 f_value = FixidityLib.newFixed(int256(data.value));
-      _levyTax(owner, f_tax, f_value, numBlocks);
-      data.lastTaxUpdate = block.number;
+  function PurchaseAnimal(uint256 animalId, uint256 newValue) public {
+    AnimalLib.AnimalData storage animal = animalDataMap[animalId];
+    address buyer = _msgSender();
+    address seller = animalC.ownerOf(animalId);
+    _updateAnimal(animal);
+    potatoC.transferFrom(buyer, seller, animal.value);
+    animal.value = newValue;
   }
 
-  ///////////////////////////////
-  // ANIMAL operations
-  ///////////////////////////////
+  // animal internal functions
+  function _taxAnimal(AnimalLib.AnimalData storage animal, address owner) internal {
+    uint256 numBlocks = block.number - animal.lastTaxUpdate;
+    // TODO set tax
+    int256 f_tax = FixidityLib.newFixed(0);
+    _levyTax(owner, f_tax, animal.value, numBlocks);
+    animal.lastTaxUpdate = block.number;
+  }
 
+
+  function _updateAnimal(AnimalLib.AnimalData storage animal) internal {
+    uint256 numBlocks = block.number - animal.lastUpdate;
+
+    // DELETE should be done sep
+    //taxAnimal(animal);
+
+    // TODO give master VOICE
+    //animal.master.voiceCredits += VC_PER_BLOCK * numBlocks;
+
+    // TODO feed the animal to full
+    //feedAnimal(animal, ENERGY_PER_BLOCK_BASE * numBlocks, MAX_ENERGY);
+
+    // DELETE should be done sep
+    //if(animal.job != 0) {
+    //    work(animal)
+    //}
+
+    // ?? is it a problem if there are future updates in the same block#?
+    // I'm pretty sure it's not
+    // ?? maybe 1 action/user limitation (also means you can keep track of oldest animal more easily)
+    animal.lastUpdate = block.number;
+  }
 
   ///////////////////////////////
   // CALLBACKS for PotatoERC20
