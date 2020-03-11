@@ -4,11 +4,11 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/math/Math.sol";
 import "@openzeppelin/contracts/GSN/Context.sol";
 import "./FixidityLib.sol";
+import "./PolicyLib.sol";
 import "./PotatoERC20.sol";
 import "./PotatoERC721.sol";
 import "./AnimalERC721.sol";
 import "./AnimalLib.sol";
-
 
 
 /// @title Government
@@ -31,6 +31,8 @@ contract Government is Context {
   // mapping from tokenId to AnimalData
   mapping(uint256 => AnimalLib.AnimalData) animalDataMap;
 
+  PolicyLib.Policy policy;
+
   // token addresses
   PotatoERC20[] public resourcesC = new PotatoERC20[](NUMRESOURCES);
   PotatoERC20 public potatoC;
@@ -44,7 +46,8 @@ contract Government is Context {
   ///////////////////////////////
   constructor() public {
     DELETE_test_ctor();
-    //createResourcesAndAssets();
+
+    PolicyLib.initializeDefaultPolicy(policy);
   }
 
   function canInit() public returns (bool) {

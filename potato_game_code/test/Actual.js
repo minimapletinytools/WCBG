@@ -68,6 +68,7 @@ contract("Government", accounts => {
   });
 
   it("print resource and asset addresses", async () => {
+    const gov = await Government.deployed();
     const numResources = await gov.NUMRESOURCES();
     var resources = [];
     for (let i = 0; i < numResources; ++i) {

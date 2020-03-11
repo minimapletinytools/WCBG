@@ -4,6 +4,7 @@ var PotatoERC20 = artifacts.require("PotatoERC20");
 var PotatoERC721 = artifacts.require("PotatoERC721");
 var FixidityLib = artifacts.require("FixidityLib");
 var AnimalLib = artifacts.require("AnimalLib");
+var PolicyLib = artifacts.require("PolicyLib");
 
 async function logGas(instance, name) {
   s = "";
@@ -18,10 +19,12 @@ module.exports = function(deployer) {
   deployer.deploy(Helper);
   deployer.deploy(FixidityLib);
   deployer.deploy(AnimalLib);
+  deployer.deploy(PolicyLib);
 
   // link libraries
   deployer.link(AnimalLib, Government);
   deployer.link(FixidityLib, Government);
+  deployer.link(PolicyLib, Government);
 
   // deploy government
   deployer.deploy(Government, {gas: 200000000}).then(async function(gov) {
