@@ -28,4 +28,9 @@ contract PotatoERC721 is ERC721 {
     require(government.allowOutsideAssetTransfer(address(this)));
     _safeTransferFrom(from, to, tokenId, _data);
   }
+
+  function govMint(address to, uint256 tokenId) public {
+    require(address(government) == _msgSender());
+    super._safeMint(to, tokenId);
+  }
 }

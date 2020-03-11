@@ -81,7 +81,12 @@ contract Government is Context {
 
   function genesis() public {
     assert(canInit());
-
+    for(uint i = 0; i < 100; i++) {
+      animalC.govMint(operator, i);
+      // TODO probably need to do this is separate method to split gas
+      // also set lastUpdate/lastTaxUpdate
+      //animalDataMap[i] = AnimalLib.AnimalData({isSet: true});
+    }
   }
 
   ///////////////////////////////
