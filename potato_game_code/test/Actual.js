@@ -19,6 +19,7 @@ function printGas(txr, name) {
   console.log(s);
 }
 
+/* DELETE
 async function setupGovernment() {
   const gov = await Government.deployed();
   try {
@@ -28,7 +29,7 @@ async function setupGovernment() {
     console.log(error);
   }
   return gov;
-}
+} */
 
 async function printCapacity(contract, name) {
   const instance = await contract.deployed();
@@ -43,7 +44,8 @@ contract("Helper", accounts => {
 });
 
 contract("Government", accounts => {
-  it("... has proper authority over PotatoERC20", async () => {
+
+  it("PotatoERC20 test", async () => {
     const gov = await Government.deployed();
     const testTokenAddress = await gov.testToken();
     const testToken = await PotatoERC20.at(testTokenAddress);
@@ -54,7 +56,7 @@ contract("Government", accounts => {
     assert(100, balance, "expected 100");
   });
 
-  it("... has proper authority over PotatoERC20", async () => {
+  it("PurchaseAnimal", async () => {
     const gov = await Government.deployed();
     const testTokenAddress = await gov.testToken();
     const testToken = await PotatoERC20.at(testTokenAddress);
@@ -65,10 +67,7 @@ contract("Government", accounts => {
     assert(100, balance, "expected 100");
   });
 
-
-  it("... sets up resources and assets correctly", async () => {
-    gov = await setupGovernment();
-
+  it("print resource and asset addresses", async () => {
     const numResources = await gov.NUMRESOURCES();
     var resources = [];
     for (let i = 0; i < numResources; ++i) {
