@@ -7,13 +7,17 @@ var AnimalLib = artifacts.require("AnimalLib");
 var PolicyLib = artifacts.require("PolicyLib");
 
 const operator = "0x515854762Aa39c9FAeF4be59134F55894e68539f";
-
-async function logGas(instance, name) {
-  s = "";
-  s += instance.constructor._json.contractName + ": "
-  txr = await web3.eth.getTransactionReceipt(instance.transactionHash)
-  s += " gasUsed: " + parseInt(txr.gasUsed);
+function logGasUsed(gasUsed, name) {
+  s = name + ": ";
+  s += " gasUsed: " + gasUsed;
+  s += " total: %" + gasUsed/10000000*100;
   console.log(s);
+}
+
+async function logGasContract(instance) {
+  txr = await web3.eth.getTransactionReceipt(instance.transactionHash)
+  const gasUsed = parseInt(txr.gasUsed);
+  logGasUsed(gasUsed, instance.constructor._json.contractName);
 }
 
 module.exports = function(deployer) {
@@ -30,7 +34,7 @@ module.exports = function(deployer) {
 
   // deploy government
   deployer.deploy(Government, operator, {gas: 200000000}).then(async function(gov) {
-    await logGas(gov);
+    await logGasContract(gov);
 
     // deploy token contracts
     const _nr = await gov.NUMRESOURCES()
@@ -48,13 +52,17 @@ module.exports = function(deployer) {
     // connect them
     await gov.connectTokenContracts(resources, debtInst.address, voiceInst.address, landInst.address, animalInst.address);
 
-    // deploy test token contracts, eventually this will be deployed by gov contract maybe...
+    // run genesis
+    tx = await gov.genesis();
+    logGasUsed(parseInt(tx.receipt.gasUsed), "genesis");
+
+    // deploy test token contracts
     erc20 = await deployer.deploy(PotatoERC20, Government.address);
     erc721 = await deployer.deploy(PotatoERC721, Government.address);
-    await logGas(erc20);
-    await logGas(erc721);
+    await logGasContract(erc20);
+    await logGasContract(erc721);
 
-    block = await web3.eth.getBlock();
-    console.log("block gas limit: " + parseInt(block.gasLimit));
+    //block = await web3.eth.getBlock();
+    //console.log("block gas limit: " + parseInt(block.gasLimit));
   });
 };
