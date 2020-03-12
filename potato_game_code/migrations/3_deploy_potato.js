@@ -7,6 +7,7 @@ var AnimalLib = artifacts.require("AnimalLib");
 var PolicyLib = artifacts.require("PolicyLib");
 
 const operator = "0x515854762Aa39c9FAeF4be59134F55894e68539f";
+const seedAccount = "0xa45a1dF70b26FF96350E1b7Ad3A2cF5aC3DA97A4";
 function logGasUsed(gasUsed, name) {
   s = name + ": ";
   s += " gasUsed: " + gasUsed;
@@ -33,7 +34,7 @@ module.exports = function(deployer) {
   deployer.link(PolicyLib, Government);
 
   // deploy government
-  deployer.deploy(Government, operator, {gas: 200000000}).then(async function(gov) {
+  deployer.deploy(Government, operator, seedAccount, {gas: 200000000}).then(async function(gov) {
     await logGasContract(gov);
 
     // deploy token contracts

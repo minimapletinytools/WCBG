@@ -5,6 +5,8 @@ const Government = artifacts.require("Government");
 const PotatoERC20 = artifacts.require("PotatoERC20");
 const PotatoERC721 = artifacts.require("PotatoERC721");
 
+const testAnimal1 = 0;
+
 function printGas(txr, name) {
   s = "";
   if (name) {
@@ -44,7 +46,21 @@ contract("Helper", accounts => {
   });
 });
 
+// accounts[0] is operator account
+// accounts[1] is seed account
 contract("Government", accounts => {
+
+  it("initial state test", async () => {
+    const gov = await Government.deployed();
+    address = await gov.potatoC();
+    const potato = await PotatoERC20.at(address);
+    const b0 = await potato.balanceOf(accounts[0]);
+    assert(100000000, b0, "expected 100000000");
+    const b1 = await potato.balanceOf(accounts[1]);
+    assert(100000000, b1, "expected 100000000");
+
+    // TODO check for ERC721
+  });
 
   it("PotatoERC20 test", async () => {
     const gov = await Government.deployed();
@@ -57,9 +73,14 @@ contract("Government", accounts => {
     assert(100, balance, "expected 100");
   });
 
-  it("PurchaseAnimal", async () => {
+  it("Animal", async () => {
     const gov = await Government.deployed();
-    //gov.PurchaseAnimal();
+    gov.SetAnimalPrice(testAnimal1, 1000, {from: accounts[0]});
+    price1 = await gov.getAnimalPrice(testAnimal1);
+    assert(1000, price1, "expected 1000");
+    gov.PurchaseAnimal(testAnimal1, 2000, {from: accounts[1]});
+    price2 = await gov.getAnimalPrice(testAnimal1);
+    assert(2000, price2, "expected 2000");
   });
 
   it("print resource and asset addresses", async () => {

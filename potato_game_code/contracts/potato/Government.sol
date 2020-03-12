@@ -32,6 +32,7 @@ contract Government is Context {
   // setup params
   bool isInit;
   address operator;
+  address seedAccount;
 
   // mapping from tokenId to AnimalData
   mapping(uint256 => AnimalLib.AnimalData) animalDataMap;
@@ -49,8 +50,9 @@ contract Government is Context {
   ///////////////////////////////
   // SETUP
   ///////////////////////////////
-  constructor(address _operator) public {
+  constructor(address _operator, address _seedAccount) public {
     operator = _operator;
+    seedAccount = _seedAccount;
     DELETE_test_ctor();
 
     PolicyLib.initializeDefaultPolicy(policy);
@@ -81,12 +83,18 @@ contract Government is Context {
 
   function genesis() public {
     assert(canInit());
+
+    // mint animals
     for(uint i = 0; i < 100; i++) {
       animalC.govMint(operator, i);
       // TODO probably need to do this is separate method to split gas
       // also set lastUpdate/lastTaxUpdate
       //animalDataMap[i] = AnimalLib.AnimalData({isSet: true});
     }
+
+    // mint potatoes
+    potatoC.govMint(operator, 100000000);
+    potatoC.govMint(seedAccount, 100000000);
   }
 
   ///////////////////////////////
@@ -146,11 +154,17 @@ contract Government is Context {
   ///////////////////////////////
   // ANIMAL assets
   ///////////////////////////////
-  function SetAnimalPrice(uint256 animal) public {
+  function getAnimalPrice(uint256 animal) public view returns (uint256) {
+    AnimalLib.AnimalData storage data = animalDataMap[animal];
+    return data.value;
+  }
+
+  function SetAnimalPrice(uint256 animal, uint256 newValue) public {
     address owner = animalC.ownerOf(animal);
     require( owner == _msgSender());
     AnimalLib.AnimalData storage data = animalDataMap[animal];
     _taxAnimal(data, owner);
+    data.value = newValue;
   }
 
   function PurchaseAnimal(uint256 animalId, uint256 newValue) public {
@@ -158,7 +172,7 @@ contract Government is Context {
     address seller = animalC.ownerOf(animalId);
     address buyer = _msgSender();
     _updateAnimal(animal, seller);
-    potatoC.transferFrom(seller, buyer, animal.value);
+    potatoC.govTransferFrom(seller, buyer, animal.value);
     animal.value = newValue;
   }
 
