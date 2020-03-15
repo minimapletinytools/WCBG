@@ -4,6 +4,7 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/math/Math.sol";
 import "@openzeppelin/contracts/GSN/Context.sol";
 import "./FixidityLib.sol";
+import "./CommonLib.sol";
 import "./PolicyLib.sol";
 import "./PotatoERC20.sol";
 import "./PotatoERC721.sol";
@@ -13,17 +14,13 @@ import "./AnimalLib.sol";
 
 /// @title Government
 contract Government is Context {
-  ///////////////////////////////
-  // DEFINITIONS
-  ///////////////////////////////
-  enum Resources {
-    POTATOES,
-    CORN,
-    CHEESE
-  }
-  uint constant public NUMRESOURCES = 3;
   using SafeMath for uint256;
+
   event Potato();
+
+  // sadly, these can not be accessed from another contract :(
+  uint256 constant public NUMRESOURCES = 3;
+  uint256 constant public NULLASSET = 0;
 
   ///////////////////////////////
   // DATA
@@ -85,11 +82,11 @@ contract Government is Context {
     assert(canInit());
 
     // mint animals
-    for(uint i = 0; i < 100; i++) {
+    for(uint i = 1; i < 100; i++) {
       animalC.govMint(operator, i);
       // TODO probably need to do this is separate method to split gas
       // also set lastUpdate/lastTaxUpdate
-      //animalDataMap[i] = AnimalLib.AnimalData({isSet: true});
+      //animalDataMap[i] = AnimalLib.AnimalData();
     }
 
     // mint potatoes
@@ -210,6 +207,12 @@ contract Government is Context {
   }
 
   ///////////////////////////////
+  // LAND assets
+  ///////////////////////////////
+
+
+
+  ///////////////////////////////
   // CALLBACKS for PotatoERC20
   ///////////////////////////////
 
@@ -223,7 +226,7 @@ contract Government is Context {
   /// @param resource - the token address of the resource to be transfered
   /// @return - allowed or not
   function allowOutsideResourceTransfer(address resource) public pure returns (bool) {
-    return true;
+    return false;
   }
 
   /// @param asset - the token address of the asset to be transfered

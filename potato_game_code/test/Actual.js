@@ -5,7 +5,7 @@ const Government = artifacts.require("Government");
 const PotatoERC20 = artifacts.require("PotatoERC20");
 const PotatoERC721 = artifacts.require("PotatoERC721");
 
-const testAnimal1 = 0;
+const testAnimal1 = 1;
 
 function printGas(txr, name) {
   s = "";
