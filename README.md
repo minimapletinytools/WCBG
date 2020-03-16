@@ -32,11 +32,13 @@ We summarize the goals of world-centric blockchain game design as follows:
 3. To use these virtual worlds as models for radical markets with multiple agents incentivized by digital assets measurable in fiat currency.
 
 # Applications
-Here we highlight just some of the mechanisms that we think are ready to integrate into a world-centric game.
+Here we highlight just some mechanisms that we think are well-suited to be deployed in a world-centric game.
 
 - Harberger Tax: In a blockchain game, tokenized assets which generate more value are owned under the Harberger tax system which fairly determines its value and allocates resources to those who can use them mot productively. Revenue can be used in governance to help further grow the game's economy. This direct application of the Harberger tax system in the game is also perhaps the most radical idea presented here (just as it is in the book [_Radical Markets_](https://vitalik.ca/general/2018/04/20/radical_markets.html) where this idea is discussed) as it upturns the notion ownership promised by current blockchain games.
 
 - [Quadratic Voting](https://en.wikipedia.org/wiki/Quadratic_voting) (QV): QV has seen a lot of attention lately as a more efficient and accurate way of gauging public interests. It has direct applications in on-chain governance and can be used as a mechanism for controlling in-game parameters. It was also featured in the book "Radical Markets". We think it is especially productive to explore QV in context of games where "bugs" such as collusion and sybil attacks might have novel emergent workarounds or actually be "features" yet imagined.
+
+- Environmental Markets: Games can simulate a dynamic environment that is in lock step with its economy. The environment provides resources for productive output of player actions that can impact the environment. This simulation in and of itself is already very interesting and can provide new insights to our present climate crisis. With an in-game governance mechanism such as QV, real world policies such as carbon tax or cap and trade on pollution can be voted in (or out) and their effects observed.
 
 - Outsourcing Labor and Risk: Just as there are many chains, there will be many world-centric blockchain games. Each game will have its own unique and dynamic economy. Cross-game bridges can be built and governed between the two chains allowing each game to outsource labor and risk to the other one. This abstract reduction of capitalism, ethics and law, might inform us about the present situation of our global economy.
 
