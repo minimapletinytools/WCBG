@@ -1,3 +1,5 @@
+# Blockchain World-Centric Games
+
 We propose a new perspective for building blockchain games based on world-centric game design. World-centric design emphasizes game mechanics that create a dynamic and interesting world rather than game mechanics that serve the player experience. For example, the table below illustrates world-centric versions of common place game mechanics.
 
 |  player-centric mechanics |  world-centric mechanics             |
