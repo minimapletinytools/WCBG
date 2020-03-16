@@ -20,7 +20,7 @@ contract Government is Context {
 
   // sadly, these can not be accessed from another contract :(
   uint256 constant public NUMRESOURCES = 3;
-  uint256 constant public NULLASSET = 0;
+  uint256 constant public NULLID = 0;
 
   ///////////////////////////////
   // DATA
@@ -211,6 +211,13 @@ contract Government is Context {
   ///////////////////////////////
 
 
+  ///////////////////////////////
+  // JOBS
+  ///////////////////////////////
+
+  function BeginJob(uint256 animalId, uint256 landId, uint8 jobIndex) public {
+
+  }
 
   ///////////////////////////////
   // CALLBACKS for PotatoERC20
