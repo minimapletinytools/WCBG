@@ -1,7 +1,5 @@
-This design document is another example of a game that fits into the economic games paradigm proposed here.
-
-# Potato Survival
-Potato Survival economically driven survival game.
+# 8 Treasures
+8 treasures is a blockchain survival game.
 
 ## Economy
 Single base token called LIFE, fluctuating supply. Needed to pay for transaction fees and various actions in game. Can be earned by playing the game.
@@ -9,9 +7,8 @@ Single base token called LIFE, fluctuating supply. Needed to pay for transaction
 ## Animals
 Each account can control up to one animal. Animals can be purchased from the using LIFE from the marketplace. Animals themselves also hold LIFE that they game obtain from interacting with the world.
 
-
 ## Gameplay
-Gameplay is comparable to the mobile battle royale game called "Black Survival". All actions are executed on chain.
+All actions are executed on chain.
 
 ### Map
 The game takes place on a cell based world map which animals can traverse and interact. At each cell, an animal can:
@@ -19,11 +16,11 @@ The game takes place on a cell based world map which animals can traverse and in
 - Travel - travel to an adjacent cell
 - Rest - rest and recover HP. Rest can consume items or cost LIFE.
 
-### Combat
-If an animal searches an area they may encounter a wild animal or another player controlled animal and enter combat. Combat is automatic and animals will damage each other’s HP based on their stats. If an animal dies, the other animal earns experience and loots the remains of the defeated animal.
-
 ### Breeding
-If two compatible animals meet in the wild, they may breed to produce offspring which is sold on the animal marketplace. LIFE-link and child sales are split 50/50 between the two parents. There are no gender requirements. Each animal can only breed once every <> blocks and breeding consumes a huge amount of energy. The animal’s starting stats are based on its parents.
+If two compatible animals meet in the wild, they may breed to produce offspring which is sold on the animal marketplace. LIFE-link and child sales are split 50/50 between the two parents. There are no gender requirements. Each animal can only breed once every N blocks and breeding consumes a huge amount of energy. The animal’s starting stats are based on its parents.
+
+### Combat
+If an animal searches an area they may encounter a wild animal or another player controlled animal and choose to enter combat. Combat is automatic and animals will damage each other’s HP based on their stats. If an animal dies, the other animal earns experience and loots the remains of the defeated animal. Combat is comparable to the mobile battle royale game called "Black Survival".
 
 ### Death
 Upon death, a portion of an animal's LIFE is sent back to the player's account. The remainder is either dropped or burnt.
@@ -32,21 +29,21 @@ Upon death, a portion of an animal's LIFE is sent back to the player's account. 
 Parents choose the price of their child when it goes on the marketplace. Sales are split evenly between parents. A child’s price decays over time if there are no purchases. When a player purchases an animal, they also give the animal some LIFE which can be used as a resource in game.
 
 ## Treasure
-There are 10 magical treasures scattered throughout the world. Once found, these treasures become privately owned public assets taxed under the harberger tax system. An account receive different buffs on their animals depending on what treasures they own. Treasure holders also earn VOICE credits over time for each treasure they hold.
+There are 8 magical treasures scattered throughout the world. Once found, these treasures become privately owned public assets taxed under the harberger tax system. An account receives different buffs on their animals depending on what treasures they own. Treasure holders also earn VOICE credits over time for each treasure they hold.
 
 ## Governance
-Certain parameters in the world are set through decentralized governance through quadratic voting using VOICE credits. Players can put up proposals to change tunable parameters in the world and alter gameplay. Example of tunable parameters:
+Certain parameters in the world are set through decentralized governance through quadratic voting using VOICE credits. Players can put up proposals to change tunable parameters in the world and alter gameplay. Examples of tunable parameters:
 
-- Marketplace taxation rate
-- Universal Basic Income (paid to all living animals)
-- Child limits
+- marketplace taxation rate
+- universal basic income (paid to all living animals)
+- eugenics (breeding policies)
 - LIFE redistribution policy after death
 
-## FANCY
+## FUTURE
 Future features to add
 
-- non consensual breeding (animals fight first, to determine who is mother and sole LIFE-link parent and earns 100% of child sale)
-- player run shops
+- non-consensual breeding (animals fight first, to determine who is mother and sole LIFE-link parent and earns 100% of child sale)
+- player run markets
 - building permanent structures in game
 - crafting system
 
@@ -148,7 +145,5 @@ Each cell has a chance to generate PVE enemies based on ecology. Ecology increas
 # Analysis
 We resist temptation to do too much analysis here and we hope interesting emergent behavior will be outside anything we can predict. We will make just a few remarks:
 
-- Potato survival is an competitive ecosystem and it is tempting to think of it from a zero-sum perspective. However, there may be some metric for economy of the entire world which may grow and shrink. In particular, the total amount of LIFE in circulation will change over time.
+- Potato survival is an competitive ecosystem and it is tempting to think of it from a zero-sum perspective. However, the economy of the virtual world may grow and shrink. In particular, the total amount of LIFE in circulation will change over time.
 - QV for voting on in game parameters (such as LIFE redistribution policy on death) gives players control over rate of growth of the economy. With more LIFE is circulation, more players can be supported at once. However, with inflation, there is an expected decrease in token value.
-
-<TODO talk about integrating with something like potato CBG>
