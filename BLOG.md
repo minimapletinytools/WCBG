@@ -1,12 +1,10 @@
-
-
-# World-Centric Blockchain Gamse
+# World-Centric Blockchain Games as Safe Playgrounds for Radical Markets
 
 \[*The following post is adapted from [this repository](https://github.com/pdlla/P2CBG_design) which tracks on-going development of the ideas presented here*\]
 
-In this article, I propose a new perspective for building blockchain games based on world-centric game design.
+In this article, I propose a new perspective for building blockchain games based on [world-centric game design](http://pdlla.org/posts/writing/2015-3_CBG.html). These games can serve as safe playgrounds for radical markets that might inform real world policies.
 
-World-centric design emphasizes game mechanics that create a dynamic and interesting world rather than game mechanics that serve the player experience. For example, the table below illustrates world-centric versions of common place game mechanics:
+To briefly summarize: world-centric design emphasizes game mechanics that create a dynamic and interesting world rather than game mechanics that serve the player experience. For example, the table below illustrates world-centric versions of common place game mechanics:
 
 |  player-centric mechanics |  world-centric mechanics             |
 |---------------------------|--------------------------------------|
@@ -19,9 +17,9 @@ Blockchain is an ideal environment for building world-centric games. Decentraliz
 
 Furthermore, real-world incentives drive player decision making. Primary and secondary markets will fairly and entirely determine the value of any in-game asset. Thus, world-centric blockchain games are also dynamic virtual economies. These economies are exchangeable for and measurable in real world fiat.
 
-From a traditional game design point of view, transactions in blockchain games are understood as in-game actions. For the player, this interface is unfamiliar, expensive, and generally speaking a bad experience. Instead, we suggest understanding in-game actions as economic transactions of a rational player controlled agent. This interpretation seems promising if we consider the fact that blockchain games have yet to gain major traction whereas cryptocurrency exchanges process millions of transactions each day.
+From a traditional game design point of view, transactions in blockchain games are understood as in-game actions. For the player, this interface is unfamiliar, expensive, and generally speaking a bad experience. Instead, I suggest understanding in-game actions as economic transactions of a rational player controlled agent. This interpretation seems promising if we consider the fact that blockchain games have yet to gain major traction whereas cryptocurrency exchanges process millions of transactions each day.
 
-Finally, along with fiat-measurable assets, world-centric virtual worlds also safely generate valuable data as models for new markets with mechanism design limited only by the developer's imagination. In this regard, real world value flows into the game while innovative market driven narratives flow out. At worst, these are exciting stories for players to share; at best, these experiences might inform real world policies.
+Finally, along with fiat-measurable assets, world-centric virtual worlds also safely generate valuable data as models for new radical markets. Mechanism design is limited only by the developer's imagination. In this regard, real world value flows into the game while innovative market driven narratives flow out. At worst, these are exciting stories for players to share; at best, these experiences might inform real world policies.
 
 This is best summarized in the following diagram:
 
@@ -33,14 +31,14 @@ With its initial state set, players compete and collaborate in the virtual world
 
 These virtual worlds can serve as playgrounds for new forms social organization. The stories can provide valuable data on new economic mechanisms that might serve us in practice.
 
-We summarize the goals of world-centric blockchain game design as follows:
+In summary, the goals of world-centric blockchain game design as follows:
 
 1. To create self-sustaining economies where players compete and collaborate to grow an economically driven world narrative.
 2. That these virtual worlds are dynamic, interesting and fun for players to explore.
 3. That these virtual worlds can safely model radical markets and provide valuable data.
 
 # Applications
-Here we highlight just some mechanisms that we think are well-suited to be deployed in a world-centric game.
+Here I highlight just some mechanisms that I think are well-suited to be deployed in a world-centric game.
 
 - Harberger Tax: In a blockchain game, tokenized assets which generate more value are owned under the Harberger tax system which fairly determines its value and allocates resources to those who can use them most productively. Revenue can be used in governance to help further grow the game's economy. This direct application of the Harberger tax system in the game is also perhaps the most radical idea presented here (just as it is in the book [_Radical Markets_](https://vitalik.ca/general/2018/04/20/radical_markets.html) where this idea is discussed) as it upturns the notion permanent private ownership promised by many current blockchain games.
 
@@ -52,18 +50,15 @@ Here we highlight just some mechanisms that we think are well-suited to be deplo
 
 - [Futarchy](https://en.wikipedia.org/wiki/Futarchy): Games are an excellent place to effectively playtest prediction markets for governance (futarchy). This is especially important as futarchy has no obvious implementation and is understood under hypothetical conditions (moreover, the [Efficient Market Hypothesis](https://en.wikipedia.org/wiki/Efficient-market_hypothesis) assures an accurate measure of probability and not well-being).
 
-The design documents in this repository incorporate variations of the Harberger tax, quadratic voting, and environmental markets in their mechanics.
-
 # Existing Work
 Whereas the explicit viewpoint of blockchain as a playground for world-centric game design to generate data on new economic mechanism is new, the practice of such is in fact not. Interleaving each new chain and ICO is a complex, dynamic and emergent web of new relations that play out like a game. Each chain or exchange is a portal into its world. Each whitepaper is like a character sheet outlining what role the organization aspires to play. Each enthusiast, developer, trader or investor is an independent agent trying to collaborate, and compete in the space.
 
-This is why we feel confident that the world-centric perspective is presently the best angle for games to grow constructively into the space of blockchain. If blockchain is indeed the paradigm shifting technology it purports to be, its applications themselves must be incommensurable with existing understanding.
+This is why I feel confident that the world-centric perspective is presently the best angle for games to grow constructively into the space of blockchain. If blockchain is indeed the paradigm shifting technology it purports to be, its applications themselves must be incommensurable with existing understanding.
 
-# Repo
-This repo is still a work in progress. For now, you can check the [Potato CBG design doc](https://github.com/pdlla/P2CBG_design/blob/master/potatocbg/README.md) which exemplifies this design perspective. There is also the [Potato Survival design doc](https://github.com/pdlla/P2CBG_design/blob/master/potato_survival.md). The other branches in this repository are unfinished. They will be merged and linked here once they are complete. At a high level, you can look forward to:
+# Example
 
-1. Documents that elaborate this design perspective for both a blockchain and game theoretic perspective
-2. Detailed spec for Potato CBG MVP
-3. Solidity implementation of Potato CBG MVP
+I drafted a detailed example of a world-centric blockchain game called [PotatoCraft](). It incorporates variations of the Harberger tax, quadratic voting, and environmental markets in its mechanics. Readers are encourage to expand upon these or come up with their own world-centric game designs.
 
-You can also read more about world-centric game design [here](http://pdlla.org/posts/writing/2015-3_CBG.html).
+I'll conclude with a high level overview of PotatoCraft which illustrates the depth and potential of what is possible.
+
+![](potatocraft.png)
