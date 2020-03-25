@@ -1,4 +1,4 @@
-# World-Centric Blockchain Games as Safe Playgrounds for Radical Markets
+# World-Centric Blockchain Games as Playgrounds for Radical Markets
 
 \[*The following post is adapted from [this repository](https://github.com/pdlla/P2CBG_design) which tracks on-going development of the ideas presented here*\]
 
