@@ -54,7 +54,7 @@ Whereas the explicit viewpoint of blockchain as a playground for world-centric g
 This is why we feel confident that the world-centric perspective is presently the best angle for games to grow constructively into the space of blockchain. If blockchain is indeed the paradigm shifting technology it purports to be, its applications themselves must be incommensurable with existing understanding.
 
 # Repo
-This repo is still a work in progress. For now, you can check the [PotatoCraft](https://github.com/pdlla/P2CBG_design/blob/master/potatocraft.md) which exemplifies this design perspective. There is also the [8 Treasures](https://github.com/pdlla/P2CBG_design/blob/master/8treasures.md). The other branches in this repository are unfinished. They will be merged and linked here once they are complete. At a high level, you can look forward to:
+This repo is still a work in progress. For now, you can check the [Potato CBG design doc](https://github.com/pdlla/WCBG/blob/master/potatocbg/README.md) which exemplifies this design perspective. There is also the [Potato Survival design doc](https://github.com/pdlla/WCBG/blob/master/potato_survival.md). The other branches in this repository are unfinished. They will be merged and linked here once they are complete. At a high level, you can look forward to:
 
 1. Documents that elaborate this design perspective for both a blockchain and game theoretic perspective
 2. Detailed spec for Potato CBG MVP
