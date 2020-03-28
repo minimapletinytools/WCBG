@@ -1,6 +1,6 @@
 # World-Centric Blockchain Games as Playgrounds for Radical Markets
 
-\[*The following post is adapted from [this repository](https://github.com/pdlla/P2CBG_design) which tracks on-going development of the ideas presented here*\]
+\[*The following post is adapted from [this repository](https://github.com/pdlla/WCBG) which tracks on-going development of the ideas presented here*\]
 
 In this article, I propose a new perspective for building blockchain games based on [world-centric game design](http://pdlla.org/posts/writing/2015-3_CBG.html). These games may serve as safe playgrounds for radical markets and inform real world policies.
 
@@ -55,7 +55,7 @@ This is why I feel confident that the world-centric perspective is presently the
 
 # Example
 
-The [PotatoCraft](https://github.com/pdlla/P2CBG_design/blob/master/potatocraft.md) design document outlines a detailed example of a world-centric blockchain game. It incorporates variations of the Harberger tax, quadratic voting, and environmental markets in its mechanics. Readers are encourage to expand upon these or come up with their own world-centric game designs.
+The [PotatoCraft](https://github.com/pdlla/WCBG/blob/master/potatocraft.md) design document outlines a detailed example of a world-centric blockchain game. It incorporates variations of the Harberger tax, quadratic voting, and environmental markets in its mechanics. Readers are encourage to expand upon these or come up with their own world-centric game designs.
 
 I'll conclude with a high level overview of PotatoCraft which illustrates the depth and potential of what is possible.
 
