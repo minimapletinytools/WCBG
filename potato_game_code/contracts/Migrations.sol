@@ -1,4 +1,4 @@
-pragma solidity 0.6.0;
+pragma solidity =0.5.16;
 
 // this contract keeps a trail of all contract upgrades
 // see https://www.trufflesuite.com/docs/truffle/getting-started/running-migrations
