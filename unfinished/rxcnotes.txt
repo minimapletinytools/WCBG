@@ -1,0 +1,161 @@
+random notes in prep for my RxC talk
+
+-----
+
+title of talk: "Shaping Culture through Play: how the magic circle can help us build a better democracy"
+
+short description: Play and culture develop hand in hand. This talk begins first by offering a practical framework where games can serve as playgrounds for new economic and governance mechanism and ends with a broader view of how play can be leveraged to shape our society.
+
+bio: Peter is an independent game designer and artist. They work toward the deconstruction of the white supremacist capitalist heteropatriarchy. Towards this end, their work tackles the personal and the political. pdlla.org
+
+
+------
+
+preface: The spark for the ideas here started long ago and were only thoroughly developed based on my experience engaging with the blockchain community and tech. The intended audience was never for folx in blockchain however some of the examples are best explained in blockchain. So apologies in advance if some of the examples here are a little foreign. I expect the important ideas will still be communicated clearly.
+
+
+
+SECTION HEADER:  "culture arises in the form of play, that it is played from the very beginning" (Johan Huizingha)
+
+<Roger Caillois writes in Man Play and Games: "Play is simultaneously liberty and invention, fantasy and discipline. All important cultural manifestations are based upon it. It creates and sustains the spirit of inquiry, respect for rules, and detachment. IN some respects the rules of law, prosody, counterpoint, perspective, stagecraft, liturgy, military tactics and debate are rules of play">
+
+We can see readily that all important cultural manifestations are based on rules of play
+
+<graphic of judge with hair/gavel <- actor, stock market <- dice, wrestling-> fencing duel -> war>
+
+The reverse is also true, that games mimic cultural institutions
+
+<war -> football -> dota/fifa, guns -> nerf guns, swans -> ballet, capitalism -> monopoly>
+
+<somewhere later on you need example of cyberpunk -> virtual reality -> more cyberpunk showing circular influence>
+
+<the point I'd really like to make later on, is since games mimic cultural institutions, they give us a safe space to play and break new boundaries, but I really need an example>
+
+Roger Caillois clarified this idea in "Man Play and Games" by placing forms of play on a continuum from ludus, structured activities with explicit rules (games), to paidia, unstructured and spontaneous activities (playfulness). Humans have a natural tendency to transform paidia into ludus, whereas established rules (ludus) can be destabalized through play (paidia). Through this process, cultures develop and change.
+
+<give example, perhaps blockchain conferences where people make up rules as they go and try and get them to take hold disrupting one another until some equillibrium is met (professionalization attained, quote "A  revolution  in  science  can  only  be  considered  complete,  according  to  the influential philosopher of science Thomas Kuhn, when it has written its  own  textbook  history.">
+
+With this as background, we'll dive into the "magic circle" a term first coined by huizingha and later cemented into the canon of contemporary game designers. The magic circle describes the space where play occurs. It defines the separation between the real world and imagined world of play.
+
+<either give example or go into Caillois 6 characteristics of play>
+
+<this part seems like to omuch of a digression>
+Now it's my claim that in the last decade or so, the boundary of the magic circle is increasing permeable. For example, microtransactions to gain progress in games are ubiquitous and players compete in e-sports internationally. Many folx have online alter egos that even engage in professional communities such as a well organized guilds or authors of user generated content.
+Thinking along these lines though, I've increasingly feel that in our digitized lives drive by neoliberal narratives, the boundary of the magic circle has all but dissipated.
+This was made concerete in my earlier example where many players earn living wages by playing games, but also applies to our daily first world lives. Where the most massive industry are shaped around passing money around and the means of production become increasing foreign and specialized (or perhaps a better term to use would be segregated).
+In this light, play is no longer free or separate. There is no circle to step outside of. Professional game streamers do not take holidays in fear of losing viewers.
+But really, this is summarized in one word we all know FOMO
+OK, so I'm no doomer or at least that wasn't the point of the talk.
+
+Through the reductive power of economics, exchanges between virtual and real world currencies in fact help us understand the distinct narratives in the two spaces and how they inform each other. Revisting the diagram from earlier, we can understand the real and virtual worlds mimic each other. We can reason with some degree of rigor about the exchange between real and virtual worlds based through the fiat-measureable exchange.
+
+now with highly isolated and powerful platforms of play, we can be deliberate about how we can shape culture with play.
+<Play is fundamental in shaping culture, technology has played a crucial part in our accelerated development in all areas and this must include play>
+
+<cut, not sure if this is gonna fit>
+To end, I want to bring in some ideas of gregory bateson's double bind theory. A double bind "is a dillemna in communication in which an individual (or group) receives two or more conflicting messages, with one negating the other." play is a tool that allows us, as humans within the system, to step outside as an observer and exert our human agency and shift the paradigm in a way that better suits our goals.
+
+I want to end with a final warning. Many of the most popular video games have neoliberal undertones.
+https://slate.com/human-interest/2020/02/choose-your-own-adventure-books-conservative-neoliberal-ideology-capitalism.html
+https://www.molleindustria.org/blog/videogames-and-the-spirit-of-capitalism/
+Most MMOs, for example, have fairly rigid criterion for success that can be gamed impartially by a talented player.
+While the framework I proposed earlier for blockchain games I proposed earlier does offer some room for counter-narratives through collaborative governance, the fantasy is most readily interpreted through neoliberal rules.
+And RxC must largely acknowledge that are existence was predicated by blockchain which is still largely driven by neoliberal narratives. Glen Weyl expressed the same concern in his essay "Why I'm not a technocrat". Likewise, as I mentioned, my ideas would not come to fruititaion had it not been for my experience in blockchain and seeing how ICOs could be used as a hack to bootstrap virtual economies that have no value until after the fact.
+The solution here is not to turn away in aversion but to stay vigilant. <keep going about using neoliberal capital to push our own agenda etc>
+
+video games use to have rigid rules and now they have evolving rules. Much like how play in culture is constantly in flux. A promising next step are platforms for play like roblox, github, itch.io etc, where developers/players share creations and resources with each other rather than follow the decisions of a centralized decision maker.
+
+
+----------
+Roger Caillois expands on Huizingha's ideas in Man Play and Games splitting games into 6 characteristics and 4 categories
+
+It is free, or not obligatory.
+It is separate (from the routine of life)
+It is uncertain, in that the outcome is not known
+It is unproductive in that it creates no new wealth and ends as it begins.
+It is governed by rules that suspend ordinary laws and behaviours and that must be followed by players.
+It involves make-believe that confirms for players the existence of imagined realities that may be set against 'real life'
+
+Agon, or competition. E.g. Chess is an almost purely agonistic game.
+Alea, or chance. E.g. Playing a slot machine is an almost purely aleatory game.
+Mimicry, or mimesis, or role playing.
+Ilinx (Greek for "whirlpool"), or vertigo, in the sense of altering perception, dizziness, disorder, or loss-of-control. E.g. taking hallucinogens, riding roller coasters, children spinning until they fall down.
+
+-------------
+
+
+Notes for Paul:
+
+First half is similar to blog post with the addition of:
+-more examples of non-blockchain world-centric games
+-more on defi as an example of a world-centric blockchain game
+-what does decentralization contribute to this model?
+-goal is to provide practical means of analyzing and building games as models for social/economic/governance mechanisms by building from world-centric games and decentralization
+
+Second half is nto in the original essay, it attempts to ground the above practical implementation in a theoretical framework
+-explores Johan Huizingha ideas that play generates culture
+-explores Gregory Bateson's ideas that play can be used to expose and perhaps change stagnant systems that resist change
+-goal is to show that there is natural relation between play and culture. Thus play is a natural means of growing the narrative of democracy in general.
+-deliberate game design is thus deliberate experimentation and growth of democracy.
+
+
+
+The first half of this presentation will go over much of the same content in the original blog post "World-Centric Blockchain Games as Playgrounds for Radical Markets"
+in addition, we'll look at other non-blockchain examples so we can better understand what "blockchain" really adds or doesn't add.
+
+world-centric games as playgrounds for emergent social mechanisms
+
+<brief summary of world-centric games>
+
+<probbaly talk more about castronova/magic circle https://en.wikipedia.org/wiki/Magic_circle_(virtual_worlds)>
+
+<existing examples of world-centric games and emergent behavior in centralized games>
+
+<issues with simulation, developers in control, etc>
+
+<decentralization brings a different sort of reality to the system>
+
+I want to be clear, that there isn't anything superior in design about a fully decentralized game world. As someone who worked for one of the most amazing centralized collaborative game design platforms, I can say there's A LOT to be had from centralized control. And in reality centralization is not nearly as centralized as we might think (remarkably analogous to the statement that decentralization is not nearly as decentralized as we think) (but this a different talk). However, if our goal is to model mechanisms for decentralized governance, this is certainly a promising avenue to take.
+
+Ever the opportunist, the hype in blockchain helped bring more attention to this idea and even solidify some of the concepts, but blockchain was never the point.
+
+TLDR; exchanges (decentralized or not) are basically super boring games. So why not make more interesting ones that generate more useful data. DEFI I'm looking at you.
+
+(indie game designer: Noooo, you can't just make a game about speculating on random variables!! You can't just engage the largest audience by capital with content representing boring real world corporations. You can't have an entire industry dedicated to building tooling and mods for you games. Noooo)
+
+<QA break>
+
+To begin, let look at the grand daddy of ludic studies Johan Huizingha and Roger Caillois.
+
+Huizingha noted that culture and play go hand in hand. While Caillois attempted to taxonomize games into 4 very useful categories, he too noted that
+
+The second half of this presentation will begin to build bridges between the concrete proposals above with a more nuance theory of play.
+Above I provided examples of how play can simulate culture. It's clear that our culture, past present and future, shape
+<example of mechanics being a reflection of culture https://slate.com/human-interest/2020/02/choose-your-own-adventure-books-conservative-neoliberal-ideology-capitalism.html?via=taps_bottom>
+
+Next I want to discuss gregory bateson's theory of play and fantasy.
+
+<theory of play and fantasy>
+huizingha/callois culture = play analogy
+take it a step further on broadening definition of play.
+
+now with highly isolated and powerful platforms of play, I hope we can be very deliberate about how we can shape culture with play.
+
+Huizingha showed that play is fundamental to the development of culture. Bateson observed that play communicates at many different levels allowing us to break of existing patterns an develop new (hopefully healthier) ones.
+
+To help wrap the begging and end of this presentation, I want to read off a paragraph from my original essay that really underscores how blockchain exists in wonderfully blurred space between play and culture.
+
+Whereas the explicit viewpoint of blockchain as a playground for world-centric game design to generate data on new economic mechanism is new, the practice of such is in fact not. Interleaving each new chain and ICO is a complex, dynamic and emergent web of new relations that play out like a game. Each chain or exchange is a portal into its world. Each whitepaper is like a character sheet outlining what role the organization aspires to play. Each enthusiast, developer, trader or investor is an independent agent trying to collaborate, and compete in the space.
+
+
+the magic circle has always been permeable
+In high stake games played to resolve conflicts for example, the magic circle covers an underlying battle of pride.
+Digitization mediates this exchange across the magic circle and allows us to apply the tools of economics
+
+In light of bateson, play is a tool that allows us, as humans within the system, to step outside as an observer and exert our human agency and shift the paradigm in a way that better suits our goals.
+
+
+"it is not merely bad natural history to suggest that people might our should obey the theory of logical types in their communciations; their failure to do this is not due to mere carelessness or ignorance. Rather, we believe the paradoxes of abstraction must make their appreanec in all communication more comlpex than that of mood-signals, and tht without these paradoxes the evolution of ocmmunication would be at an end. Life would then be and endless interchange of stylized messages, a game with rigid rules, unrelieveb by change or humor."
+
+
+We'll see frequently with people starting their careers who will "perform" their profession (and sadly carry along with it antiquated and often gendered narratives that are harmful to inclusivity and limit posibilities). But what it means to be such a profession is often lost in its own simulation, where the act and reality are confused and difficult to distinguish. Thus the ironic truth behind the saying "fake it till you make it". But this act of performance is itself a form of play, and through a continual dialog of trial and error, the profession defined for better or for worse.
