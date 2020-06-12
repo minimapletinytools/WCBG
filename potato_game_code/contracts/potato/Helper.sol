@@ -1,4 +1,4 @@
-pragma solidity ^0.6.0;
+pragma solidity =0.5.16;
 
 contract Helper {
   function codeSize(address _addr) public view returns (uint256 o_code) {

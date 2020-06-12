@@ -1,4 +1,4 @@
-pragma solidity ^0.6.0;
+pragma solidity =0.5.16;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -27,7 +27,8 @@ contract PotatoERC20 is ERC20 {
    * - `recipient` cannot be the zero address.
    * - the caller must have a balance of at least `amount`.
    */
-  function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
+  // virtual override
+  function transfer(address recipient, uint256 amount) public returns (bool) {
     require(government.allowOutsideResourceTransfer(address(this)));
     return super.transfer(recipient, amount);
   }
@@ -45,7 +46,8 @@ contract PotatoERC20 is ERC20 {
    * - the caller must have allowance for `sender`'s tokens of at least
    * `amount`.
    */
-  function transferFrom(address sender, address recipient, uint256 amount) public virtual override returns (bool) {
+  // virtual override
+  function transferFrom(address sender, address recipient, uint256 amount) public returns (bool) {
     require(government.allowOutsideResourceTransfer(address(this)));
     return super.transferFrom(sender, recipient, amount);
   }

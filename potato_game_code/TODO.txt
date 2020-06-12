@@ -5,6 +5,7 @@ npm install --save-dev @openzeppelin/contracts@beta
 npm i -g truffle@nodeLTS
 # whatever packages https://github.com/rkalis/truffle-assertions
 npm install truffle-assertions
+npm install truffle-hdwallet-provider
 
 
 :: launching

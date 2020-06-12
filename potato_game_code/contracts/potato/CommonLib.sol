@@ -1,10 +1,14 @@
-pragma solidity ^0.6.0;
+pragma solidity =0.5.16;
 
 ///////////////////////////////
 // DEFINITIONS
 ///////////////////////////////
-enum Resources {
-  POTATOES,
-  CORN,
-  CHEESE
+
+
+library CommonLib {
+  enum Resources {
+    POTATOES,
+    CORN,
+    CHEESE
+  }
 }
