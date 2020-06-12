@@ -95,3 +95,40 @@ Salen and Zimmerman writes, "In a very basic sense, the magic circle of a game i
 In this new framework, the magic circle is but a vestigial frame that is but a starting point for making meaning. Whereas each player may create their own relation with the circle, it's understood and accepted that the circle does not restrict player in a
 
 In blockchain space, the magic circle might be analogous to altruism. Such actors do exist along side with byzantine and rational actors.
+
+
+
+-----------
+Oct 2019 speech to text notes
+
+Huizingha The view we take in the following pages is that culture arises in the form of play, that it is played from the very beginning... Social life is endued with supra-biological forms, in the shape of play, which enhances its value.[22]
+
+Play<->culture(econ sim). Maybe misapplication of the quote but maybe that’s the point￼
+
+The chapter contains some pleasantly surprising remarks:
+1. One might call society a game in the formal sense, if one bears in mind that such a game is the living principle of all civilization.[28]
+2. In the absence of the play-spirit civilization is impossible.[29]
+
+To help support the point that play and S from increasingly blurred lines with block chain.
+
+Later on
+
+We have to conclude, therefore, that civilization is, in its earliest phases, played.
+It does not come from play like a baby detaching itself from the womb:
+it arises in and as play, and never leaves it.[41]
+
+Though this reminds me of people performing various things as in performance of masculinity or performance of confidence etc.￼
+
+So how do I justify that play is homeless? Shirley Wann does not think bitcoin is harmless based on energy consumption. Bitcoin is no more or less an Econ simulation game then potato game.￼￼
+
+Quadratic voting and governance inside a potato game that affects economic parameters and the game certainly reminds us of on chain governance for consensus protocols.￼
+
+
+Good Wikipedia quote for roger callous
+
+
+Caillois also places forms of play on a continuum from ludus, structured activities with explicit rules (games), to paidia, unstructured and spontaneous activities (playfulness), although in human affairs the tendency is always to turn paidia into ludus, and that established rules are also subject to the pressures of paidia. It is this process of rule-forming and re-forming that may be used to account for the apparent instability of cultures.
+
+
+
+The ideas proposed here are easily appreciated in the. BLock chain telos and invariably will be seen under the blocks and games movements and therefore we speak to  The audience concerned with these ideas in the short version of the document. the ideas proposed here Are better understood in a separate framework￼ independent of block chain.￼￼ This framework will be outlined in detail in a separate document and together they will also look at how block chain relates to and supports this framework.￼
