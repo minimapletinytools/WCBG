@@ -20,3 +20,10 @@ truffle console
 2: 0xa931938352a654b2bc21de8c06638f3d4db90b7816825006d79231d0423bfa7d
 
 ganache-cli --gasLimit 200000000 --account="0x1f6f5e6e1935efda1afeedfc1bde1a1c49d0cf266dc25a207e7e681fb47b715d,100000000000000000000000" --account="0xa931938352a654b2bc21de8c06638f3d4db90b7816825006d79231d0423bfa7d,100000000000000000000000"
+
+:: TODO ::
+-uniswap v2 changes
+  -limit transfers on UniswapV2ERC20
+  -connect uniswap V2 factory with gov
+    -all factory created contracts are registered in gov to authorize transactions
+  -add tax functionality to uniswapV2 pair
